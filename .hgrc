@@ -1,0 +1,6 @@
+[ui]
+username = Werner Mendizabal <nonameentername@gmail.com>
+verbose  = True
+
+[extensions]
+hgext.purge = !
