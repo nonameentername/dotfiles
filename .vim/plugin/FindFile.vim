@@ -131,7 +131,7 @@ fun! <SID>FindFile()
 	nnoremap <buffer> <ESC> :silent call <SID>QuitBuff()<CR>
 	setlocal completeopt=menuone,longest,preview
 	setlocal omnifunc=CompleteFile
-	setlocal noignorecase
+	"setlocal noignorecase
 	startinsert
 endfun
 
