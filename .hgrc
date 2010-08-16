@@ -4,3 +4,11 @@ verbose  = True
 
 [extensions]
 hgext.purge = !
+hgext.extdiff =
+
+[extdiff]
+cmd.vimdiff = 
+
+[alias]
+vi = vimdiff
+vim = vimdiff
