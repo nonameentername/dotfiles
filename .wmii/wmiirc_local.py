@@ -24,3 +24,7 @@ keys.bind('main', (
     ('%(mod)s-w', "Launch a terminal",
         lambda k: call(*firefox, background=True)),
 ))
+
+@defmonitor
+def time(self):
+    return wmii.cache['focuscolors'], datetime.datetime.now().strftime('%a %b %d %I:%M:%S %Y')
