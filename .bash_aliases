@@ -1,3 +1,6 @@
+export JAVA_HOME=/usr/lib/jvm/java-6-sun
+export IDEA_JDK=$JAVA_HOME
+
 #gba/nds compiler
 export SDK_ROOT=/usr/local/include/android
 export DEVKITPRO=/usr/local/include/devkitPro
