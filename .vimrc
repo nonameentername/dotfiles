@@ -30,7 +30,8 @@ map<leader>p "+p
 nmap<leader>t :tag 
 nmap<leader>h :split<cr>
 nmap<leader>v :vsplit<cr>
-map<leader><tab> :buffer 
+nmap<leader><tab> :buffer
+nmap<leader>b :Buffer<cr>
 
 "Subversion
 nmap<leader>st :!svn st<cr>
