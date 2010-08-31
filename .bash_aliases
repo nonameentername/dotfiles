@@ -1,5 +1,7 @@
 export JAVA_HOME=/usr/lib/jvm/java-6-sun
 export IDEA_JDK=$JAVA_HOME
+export M2_HOME=/usr/share/maven2
+export ANT_HOME=/usr/share/ant
 
 #gba/nds compiler
 export SDK_ROOT=/usr/local/include/android
