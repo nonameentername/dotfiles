@@ -18,10 +18,17 @@ wmii['normcolors'] = '#000000', '#ffffff', '#0a67a3'
 wmii['focuscolors'] = '#ffffff', '#0a67a3', '#000000'
 wmii['border'] = 0
 
+os.system('ps aux | grep gnome-settings-daemon | grep -v grep > /tmp/wmiitmp')
+file = open('/tmp/wmiitmp', 'r')
+
+if not file.readlines():
+    os.system('gnome-settings-daemon')
+
+pygmi.shell = os.environ.get('SHELL', 'bash')
 firefox = 'wmiir', 'setsid', 'firefox', '.'
 
 keys.bind('main', (
-    ('%(mod)s-w', "Launch a terminal",
+    ('%(mod)s-w', "Launch a firefox",
         lambda k: call(*firefox, background=True)),
 ))
 
