@@ -9,7 +9,7 @@ from threading import Thread, Timer
 import wmiirc
 from wmiirc import *
 
-def start(name, tag='home'):
+def start(name):
     tempfile = '/tmp/wmiitmp'
     os.system('ps aux | grep %s | grep -v grep > %s' % (name, tempfile))
     file = open(tempfile, 'r')
@@ -36,7 +36,13 @@ keys.bind('main', (
 def time(self):
     return wmii.cache['focuscolors'], datetime.datetime.now().strftime('%a %b %d %I:%M:%S %Y')
 
+wmii.tagrules = (
+    ('Firefox.*', 'home+web'),
+    ('Pidgin', 'pidgin'),
+    ('Evolution', 'mail'),
+)
+
 start('gnome-settings-daemon')
-#start('pidgin', 'pidgin')
-#start('evolution', 'mail')
-#start('firefox')
+start('pidgin')
+start('evolution')
+start('firefox')
