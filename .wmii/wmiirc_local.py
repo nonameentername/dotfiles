@@ -28,6 +28,14 @@ wmii['border'] = 0
 firefox = 'wmiir', 'setsid', 'firefox', '.'
 
 keys.bind('main', (
+    ('%(mod)s-space',      "Open program menu",
+        lambda k: program_menu()),
+    ('%(mod)s-p', "Move to the view to the right",
+        lambda k: tags.select(tags.next(True))),
+    ('%(mod)s-Shift-p', "Move to the view to the right, take along current client",
+        lambda k: tags.select(tags.next(True), take_client=Client('sel'))),
+    ('%(mod)s-b',     "Toggle between floating and managed layers",
+        lambda k: Tag('sel').select('toggle')),
     ('%(mod)s-w', "Launch a firefox",
         lambda k: call(*firefox, background=True)),
 ))
