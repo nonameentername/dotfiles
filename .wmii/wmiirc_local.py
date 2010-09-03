@@ -36,6 +36,8 @@ keys.bind('main', (
         lambda k: tags.select(tags.next(True), take_client=Client('sel'))),
     ('%(mod)s-b',     "Toggle between floating and managed layers",
         lambda k: Tag('sel').select('toggle')),
+    ('%(mod)s-Shift-b',     "Toggle selected client between floating and managed layers",
+        lambda k: Tag('sel').send(Client('sel'), 'toggle')),
     ('%(mod)s-w', "Launch a firefox",
         lambda k: call(*firefox, background=True)),
 ))
