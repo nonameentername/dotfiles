@@ -5,6 +5,7 @@ import re
 import sys
 import traceback
 from threading import Thread, Timer
+from subprocess import *
 
 import wmiirc
 from wmiirc import *
@@ -17,6 +18,21 @@ def start(name):
     if not file.readlines():
         os.system('%s &' % name)
 
+def terminal():
+    p1 = Popen(['screen', '-ls'], stdout=PIPE)
+    output = p1.communicate()[0].splitlines()
+    screen_running = False
+    if output[0] == "There is a screen on:":
+        for line in output[1:]:
+            if 'ubuntu-session' in line: screen_running = True
+    if screen_running:
+        os.system('screen -x ubuntu-session -X screen -t new')
+        os.system('screen -x ubuntu-session -X other')
+        os.system('x-terminal-emulator -e "screen -x ubuntu-session -p new"')
+        os.system('screen -x ubuntu-session -p new -X title "bash"')
+    else:
+        os.system('x-terminal-emulator -e "screen -S ubuntu-session" &')
+
 background = '#333333'
 floatbackground='#222222'
 
@@ -28,6 +44,8 @@ wmii['border'] = 0
 firefox = 'wmiir', 'setsid', 'firefox', '.'
 
 keys.bind('main', (
+    ('%(mod)s-Return', "Launch a terminal",
+        lambda k: terminal()),
     ('%(mod)s-space',      "Open program menu",
         lambda k: program_menu()),
     ('%(mod)s-p', "Move to the view to the right",
@@ -47,7 +65,7 @@ def time(self):
     return wmii.cache['focuscolors'], datetime.datetime.now().strftime('%a %b %d %I:%M:%S %Y')
 
 wmii.tagrules = (
-    ('Firefox.*', 'home+web'),
+    ('Firefox.*', 'home'),
     ('Pidgin', 'pidgin'),
     ('Evolution', 'mail'),
 )
