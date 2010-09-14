@@ -6,16 +6,17 @@ import sys
 import traceback
 from threading import Thread, Timer
 from subprocess import *
+import time
 
 import wmiirc
 from wmiirc import *
 
 def start(name):
-    tempfile = '/tmp/wmiitmp'
-    os.system('ps aux | grep %s | grep -v grep > %s' % (name, tempfile))
-    file = open(tempfile, 'r')
-
-    if not file.readlines():
+    p1 = Popen(['ps', 'aux'], stdout=PIPE)
+    p2 = Popen(['grep', name], stdin=p1.stdout, stdout=PIPE)
+    p3 = Popen(['grep', '-v', 'grep'], stdin=p2.stdout, stdout=PIPE)
+    output = p3.communicate()[0].splitlines()
+    if not output:
         os.system('%s &' % name)
 
 def terminal():
