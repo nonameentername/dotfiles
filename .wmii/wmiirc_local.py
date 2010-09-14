@@ -19,6 +19,7 @@ def start(name):
         os.system('%s &' % name)
 
 def terminal():
+    title = datetime.datetime.now().strftime('%I%M%S')
     p1 = Popen(['screen', '-ls'], stdout=PIPE)
     output = p1.communicate()[0].splitlines()
     screen_running = False
@@ -26,12 +27,11 @@ def terminal():
         for line in output[1:]:
             if 'ubuntu-session' in line: screen_running = True
     if screen_running:
-        os.system('screen -x ubuntu-session -X screen -t new')
+        os.system('screen -x ubuntu-session -X screen -t %s' % title)
         os.system('screen -x ubuntu-session -X other')
-        os.system('x-terminal-emulator -e "screen -x ubuntu-session -p new"')
-        os.system('screen -x ubuntu-session -p new -X title "bash"')
+        os.system('x-terminal-emulator -e "screen -x ubuntu-session -p %s" &' % title)
     else:
-        os.system('x-terminal-emulator -e "screen -S ubuntu-session" &')
+        os.system('x-terminal-emulator -e "screen -S ubuntu-session -t %s" &' % title)
 
 background = '#333333'
 floatbackground='#222222'
@@ -72,5 +72,4 @@ wmii.tagrules = (
 
 start('gnome-settings-daemon')
 start('pidgin')
-start('evolution')
 start('firefox')
