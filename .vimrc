@@ -33,6 +33,9 @@ nmap<leader>v :vsplit<cr>
 nmap<leader><tab> :buffer 
 nmap<leader>b :Buffer<cr>
 
+"reload
+nmap<leader>r :source ~/.vimrc<cr>
+
 "Subversion
 nmap<leader>st :!svn st<cr>
 nmap<leader>di :!svn di <C-R>%<cr>

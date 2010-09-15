@@ -1,5 +1,6 @@
 import vim
 import os
+import re
 from subprocess import *
 
 class FindFile:
@@ -8,31 +9,38 @@ class FindFile:
         self.files = self.getfiles()
         self.name = ''
         
-        vim.command('sp temp')
-
-        w = vim.current.window
+        vim.command('sp FindFile')
+        self.w = vim.current.window
+        self.b = vim.current.buffer
 
         vim.command('set cursorline')
         vim.command('setlocal buftype=nofile')
         vim.command('setlocal bufhidden=hide')
         vim.command('setlocal noswapfile')
 
-        [self._mapchar(x) for x in range(97,123)]
         vim.command('nmap <buffer><BS> :python findFile.backspace()<cr>')
         vim.command('nmap <buffer><Enter> :python findFile.enter()<cr>')
+        vim.command('nmap <buffer><Esc> :python findFile.exit()<cr>')
+
+        for char in '*._-^$':
+            vim.command('nmap <buffer>%s :python findFile.keydown("%s")<cr>' % (char,char))
+
+        for num in range(0,10):
+            vim.command('nmap <buffer>%s :python findFile.keydown("%s")<cr>' % (num,num))
+
+        for num in range(65,91) and range(97,123):
+            vim.command('nmap <buffer>%s :python findFile.keydown("%s")<cr>' % (chr(num),chr(num)))
     
         self.update()
 
-    def _mapchar(self, num):
-        vim.command('nmap <buffer>%s :python findFile.keydown("%s")<cr>' % (chr(num),chr(num)))
+    def exit(self):
+        vim.command('silent!bd! FindFile')
 
     def enter(self):
         self.name = vim.current.line
         self.update()
-        for x in self.files:
-            if x == self.name:
-                vim.command('silent!bd! temp')
-                vim.command('silent!edit %s' % self.files[x])
+        vim.command('silent!bd! FindFile')
+        vim.command('silent!edit %s' % self.files[self.name])
 
     def backspace(self):
         self.name = self.name[:-1]
@@ -43,9 +51,10 @@ class FindFile:
         self.update()
 
     def update(self):
-        vim.current.buffer[:] = None
-        vim.current.buffer[0] = self.name
-        [vim.current.buffer.append(x) for x in self.files if self.name in x]
+        self.b[:] = None
+        self.b[0] = self.name
+        [self.b.append(x) for x in self.files if re.search(self.name, x)]
+        self.w.cursor = (1, len(self.name))
 
     def getfiles(self):
         result = {}
