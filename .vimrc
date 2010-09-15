@@ -30,18 +30,17 @@ map<leader>p "+p
 nmap<leader>t :tag 
 nmap<leader>h :split<cr>
 nmap<leader>v :vsplit<cr>
-nmap<leader><tab> :buffer
+nmap<leader><tab> :buffer 
 nmap<leader>b :Buffer<cr>
 
 "Subversion
 nmap<leader>st :!svn st<cr>
 nmap<leader>di :!svn di <C-R>%<cr>
 
+"Python
+pyfile ~/.vim/FindFile.py
 "FindFile
-nmap<leader>f :FindFile<cr>
-nmap<leader>c :FindFileCache .<cr>
-let g:FindFileIgnore = ['*.o', '*.class']
-
+nmap<silent><leader>f :py findFile = FindFile()<cr>
 
 "OmniCppComplete
 set nocp
@@ -62,3 +61,4 @@ map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR>
 
 "javacomplete
 "autocmd Filetype java setlocal omnifunc=javacomplete#Complete 
+autocmd Filetype python setlocal omnifunc=pythoncomplete#Complete 
