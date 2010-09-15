@@ -28,8 +28,11 @@ class FindFile:
         for num in range(0,10):
             vim.command('nmap <buffer>%s :python findFile.keydown("%s")<cr>' % (num,num))
 
-        for num in range(65,91) and range(97,123):
+        for num in range(97,123):
             vim.command('nmap <buffer>%s :python findFile.keydown("%s")<cr>' % (chr(num),chr(num)))
+
+        for num in range(97,123):
+            vim.command('nmap <buffer><S-%s> :python findFile.keydown("%s".upper())<cr>' % (chr(num),chr(num)))
     
         self.update()
 
@@ -53,7 +56,14 @@ class FindFile:
     def update(self):
         self.b[:] = None
         self.b[0] = self.name
-        [self.b.append(x) for x in self.files if re.search(self.name, x)]
+
+        def validate(reg, line):
+            if reg.islower():
+                return re.search(reg, line, re.IGNORECASE)
+            else:
+                return re.search(reg, line)
+
+        [self.b.append(x) for x in self.files if validate(self.name, x)]
         self.w.cursor = (1, len(self.name))
 
     def getfiles(self):
