@@ -31,7 +31,6 @@ nmap<leader>t :tag
 nmap<leader>h :split<cr>
 nmap<leader>v :vsplit<cr>
 nmap<leader><tab> :buffer 
-nmap<leader>b :Buffer<cr>
 
 "reload
 nmap<leader>r :source ~/.vimrc<cr>
@@ -41,9 +40,10 @@ nmap<leader>st :!svn st<cr>
 nmap<leader>di :!svn di <C-R>%<cr>
 
 "Python
-pyfile ~/.vim/FindFile.py
+pyfile ~/.vim/source.py
 "FindFile
-nmap<silent><leader>f :py findFile = FindFile()<cr>
+nmap<silent><leader>f :py searchFile = searchfile()<cr>
+nmap<silent><leader>b :py searchBuffer = searchbuffer()<cr>
 
 "OmniCppComplete
 set nocp
