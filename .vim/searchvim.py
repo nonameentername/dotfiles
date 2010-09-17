@@ -65,6 +65,8 @@ class searchvim:
                 return re.search(reg, line)
 
         [self.b.append(line) for line in self.lines if validate(self.name, line)]
+        if len(self.b) == 2:
+            self.b[0] = self.b[1]
         self.w.cursor = (1, len(self.name))
 
     def getlines(self):
