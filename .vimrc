@@ -27,7 +27,6 @@ nmap<silent><leader>n :bn<cr>
 map<leader>y "+y
 map<leader>p "+p
 
-nmap<leader>t :tag 
 nmap<leader>h :split<cr>
 nmap<leader>v :vsplit<cr>
 nmap<leader><tab> :buffer 
@@ -44,6 +43,7 @@ pyfile ~/.vim/source.py
 "FindFile
 nmap<silent><leader>f :py searchFile = searchfile()<cr>
 nmap<silent><leader>b :py searchBuffer = searchbuffer()<cr>
+nmap<silent><leader>t :py searchTags = searchtags()<cr>
 
 "OmniCppComplete
 set nocp
