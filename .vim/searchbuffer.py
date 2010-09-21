@@ -24,5 +24,5 @@ class searchbuffer(searchvim):
         for line in temp.splitlines():
             if len(line):
                 name = line.split('"')[1]
-                result[os.path.basename(name)] = name
+                self.adddict(result, os.path.basename(name),  name)
         return result
