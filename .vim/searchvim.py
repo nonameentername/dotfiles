@@ -41,10 +41,11 @@ class searchvim:
         vim.command('silent!bd! %s' % self.buffername)
 
     def enter(self):
-        self.name = vim.current.line
-        self.update()
-        vim.command('silent!bd! %s' % self.buffername)
-        self.handleselect(self.name)
+        if self.w.cursor[0] > 1 or self.b[0] == self.b[1]:
+            self.name = vim.current.line
+            self.update()
+            vim.command('silent!bd! %s' % self.buffername)
+            self.handleselect(self.name)
 
     def backspace(self):
         self.name = self.name[:-1]
