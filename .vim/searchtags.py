@@ -27,6 +27,6 @@ class searchtags(searchvim):
         if os.path.isfile(filename):
             for line in open(filename).readlines():
                 tokens = line.split('\t')
-                result[tokens[0]] = (tokens[1], tokens[2])
+                self.adddict(result, tokens[0], (tokens[1], tokens[2]))
 
         return result

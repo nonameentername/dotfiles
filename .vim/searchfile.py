@@ -15,7 +15,11 @@ class searchfile(searchvim):
 
     def getlines(self):
         result = {}
-        p1 = Popen(['find', '-type', 'f'], stdout=PIPE)
-        for line in p1.communicate()[0].splitlines():
-            result[os.path.basename(line)] = line[2:]
+
+        for root, dirs, files in os.walk('.'):
+            for name in files:
+                self.adddict(result, name, os.path.join(root[2:],name))
+            for name in dirs:
+                if name.startswith('.'):
+                    dirs.remove(name)
         return result
