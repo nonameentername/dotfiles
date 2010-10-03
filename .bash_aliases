@@ -11,6 +11,7 @@ export DEVKITARM=$DEVKITPRO/devkitARM
 export PATH=/usr/local/bin/eclipse:$PATH
 export PATH=$SDK_ROOT/tools:$DEVKITARM/bin:$PATH
 export PATH=/usr/local/share/android-sdk/tools:$PATH
+export PATH=$HOME/usr/bin:$PATH
 export PATH=$PATH:.
 
 #Terminal prompt
