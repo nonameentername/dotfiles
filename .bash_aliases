@@ -15,5 +15,7 @@ export PATH=$HOME/usr/bin:$PATH
 export PATH=$HOME/source/ndk/build/prebuilt/linux-x86/arm-eabi-4.4.0/bin:$PATH
 export PATH=$PATH:.
 
+export PYTHONSTARTUP=$HOME/.pythonrc
+
 #Terminal prompt
 PS1="[\u@\h:\#]$ "
