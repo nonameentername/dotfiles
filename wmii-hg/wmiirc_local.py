@@ -22,11 +22,12 @@ def start(name):
 def terminal():
     title = datetime.datetime.now().strftime('%I%M%S')
     p1 = Popen(['screen', '-ls'], stdout=PIPE)
-    output = p1.communicate()[0].splitlines()
-    screen_running = False
-    if output[0] == "There is a screen on:":
-        for line in output[1:]:
-            if 'ubuntu-session' in line: screen_running = True
+    p2 = Popen(['grep', 'ubuntu-session'], stdin=p1.stdout, stdout=PIPE)
+    output = p2.communicate()[0]
+    if output:
+        screen_running = True
+    else:
+        screen_running = False
     if screen_running:
         os.system('screen -x ubuntu-session -X screen -t %s' % title)
         os.system('screen -x ubuntu-session -X other')
@@ -64,12 +65,6 @@ keys.bind('main', (
 @defmonitor
 def time(self):
     return wmii.cache['focuscolors'], datetime.datetime.now().strftime('%a %b %d %I:%M:%S %Y')
-
-wmii.tagrules = (
-    ('Firefox.*', 'home'),
-    ('Pidgin', 'pidgin'),
-    ('Evolution', 'mail'),
-)
 
 start('gnome-settings-daemon')
 start('pidgin')
