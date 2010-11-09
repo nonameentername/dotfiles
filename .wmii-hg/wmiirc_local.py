@@ -66,6 +66,6 @@ keys.bind('main', (
 def time(self):
     return wmii.cache['focuscolors'], datetime.datetime.now().strftime('%a %b %d %I:%M:%S %Y')
 
-start('gnome-settings-daemon')
-start('pidgin')
-start('firefox')
+#start('gnome-settings-daemon')
+#start('pidgin')
+#start('firefox')
