@@ -17,5 +17,7 @@ export PATH=$PATH:.
 
 export PYTHONSTARTUP=$HOME/.pythonrc
 
+alias wicd-client="wicd-client --no-tray"
+
 #Terminal prompt
 PS1="[\u@\h:\#]$ "

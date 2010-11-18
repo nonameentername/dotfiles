@@ -1,0 +1,14 @@
+#!/usr/bin/env python
+import os
+import sys
+
+if len(sys.argv) == 1:
+    print 'Usage: %s <hostname>' % sys.argv[0]
+else:
+    hostname = sys.argv[1]
+
+    command = 'ssh -p 23 -f -N -L 24800:%s:24800 %s' % (hostname, hostname)
+    os.system(command)
+
+    command = '/usr/bin/synergyc localhost'
+    os.system(command)
