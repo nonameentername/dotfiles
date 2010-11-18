@@ -5,3 +5,7 @@ except ImportError:
 else:
     import rlcompleter
     readline.parse_and_bind('tab: complete')
+
+import sys, os
+sys.path.append(os.path.expanduser('~') + '/usr/lib/python')
+del sys, os
