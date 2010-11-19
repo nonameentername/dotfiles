@@ -22,3 +22,8 @@ alias wicd-client="wicd-client --no-tray"
 
 #Terminal prompt
 PS1="[\u@\h:\#]$ "
+
+export VISUAL=vi
+export EDITOR=vi
+
+alias sudo='sudo env PATH=$PATH'
