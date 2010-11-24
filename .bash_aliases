@@ -19,6 +19,7 @@ export PATH=.:$PATH
 export PYTHONSTARTUP=$HOME/.pythonrc
 
 alias wicd-client="wicd-client --no-tray"
+alias pysmell="PYTHONPATH=$HOME/usr/lib/python2.6/site-packages pysmell"
 
 #Terminal prompt
 PS1="[\u@\h:\#]$ "

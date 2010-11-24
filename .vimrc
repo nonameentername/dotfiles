@@ -65,4 +65,7 @@ map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR>
 
 "javacomplete
 "autocmd Filetype java setlocal omnifunc=javacomplete#Complete 
-autocmd Filetype python setlocal omnifunc=pythoncomplete#Complete 
+
+exe ":source ~/source/pysmell/pysmell.vim"
+autocmd FileType python set omnifunc=pysmell#Complete
+"autocmd Filetype python setlocal omnifunc=pythoncomplete#Complete 
