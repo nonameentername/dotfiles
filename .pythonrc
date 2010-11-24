@@ -8,4 +8,5 @@ else:
 
 import sys, os
 sys.path.append(os.path.expanduser('~') + '/usr/lib/python')
+sys.path.append(os.path.expanduser('~') + '/usr/lib/python2.6/site-packages')
 del sys, os
