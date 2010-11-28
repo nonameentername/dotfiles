@@ -16,6 +16,7 @@ class searchgrep(searchvim):
 
         if self.search:
             searchvim.__init__(self, 'searchGrep')
+        self.delete = False
 
     def handleselect(self, line):
         vim.command('silent!edit %s' % self.lines[line][0])
