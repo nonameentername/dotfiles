@@ -9,12 +9,12 @@ class searchvim:
         self.buffername = buffername
         self.lines = self.getlines()
         self.name = ''
+        self.delete = True
         
-        vim.command('sp %s' % buffername)
+        vim.command('e %s' % buffername)
         self.w = vim.current.window
         self.b = vim.current.buffer
 
-        vim.command('set cursorline')
         vim.command('setlocal buftype=nofile')
         vim.command('setlocal bufhidden=hide')
         vim.command('setlocal noswapfile')
@@ -42,10 +42,9 @@ class searchvim:
 
     def enter(self):
         if self.w.cursor[0] > 1 or self.b[0] == self.b[1]:
-            self.name = vim.current.line
-            self.update()
-            vim.command('silent!bd! %s' % self.buffername)
-            self.handleselect(self.name)
+            self.handleselect(self.b[self.w.cursor[0]-1])
+            if self.delete:
+                vim.command('silent!bd! %s' % self.buffername)
 
     def backspace(self):
         self.name = self.name[:-1]
@@ -60,10 +59,13 @@ class searchvim:
         self.b[0] = self.name
 
         def validate(reg, line):
-            if reg.islower():
-                return re.search(reg, line, re.IGNORECASE)
-            else:
-                return re.search(reg, line)
+            try:
+                if reg.islower():
+                    return re.search(reg, line, re.IGNORECASE)
+                else:
+                    return re.search(reg, line)
+            except:
+                return False
 
         [self.b.append(line) for line in sorted(self.lines) if validate(self.name, line)]
         if len(self.b) == 2:
