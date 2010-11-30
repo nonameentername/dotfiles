@@ -13,10 +13,10 @@ class searchgrep(searchvim):
         vim.command("let user_input = input(':')")
         vim.command('call inputrestore()')
         self.search = vim.eval('user_input')
+        self.delete = False
 
         if self.search:
             searchvim.__init__(self)
-        self.delete = False
 
     def handleselect(self, line):
         vim.command('silent!edit %s' % self.lines[line][0])

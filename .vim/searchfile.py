@@ -8,6 +8,7 @@ from searchvim import searchvim
 class searchfile(searchvim):
 
     def __init__(self):
+        self.ignorelist = ['.*pyc$']
         searchvim.__init__(self)
 
     def handleselect(self, line):

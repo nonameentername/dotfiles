@@ -8,9 +8,16 @@ class searchvim:
 
     def __init__(self):
         self.name = self.__class__.__name__
-        self.lines = self.getlines()
+
+        if hasattr(self, 'ignorelist'):
+            self.lines = self.ignore(self.getlines())
+        else:
+            self.lines = self.getlines()
+
+        if not hasattr(self, 'delete'):
+            self.delete = True
+
         self.searchname = ''
-        self.delete = True
         ins[self.name] = self
 
         vim.command('e %s' % self.name)
@@ -82,6 +89,18 @@ class searchvim:
             d['%s [%s]' % (key,i)] = value
         else:
             d[key] = value
+
+    def ignore(self, lines):
+        result = {}
+
+        for line in lines:
+            for item in self.ignorelist:
+                if re.match(item, line):
+                    break
+            else:
+                result[line] = lines[line]
+
+        return result
 
     def getlines(self):
         pass
