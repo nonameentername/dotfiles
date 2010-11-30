@@ -15,7 +15,7 @@ class searchgrep(searchvim):
         self.search = vim.eval('user_input')
 
         if self.search:
-            searchvim.__init__(self, 'searchGrep')
+            searchvim.__init__(self)
         self.delete = False
 
     def handleselect(self, line):

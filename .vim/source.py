@@ -8,3 +8,9 @@ from searchfile import searchfile
 from searchbuffer import searchbuffer
 from searchtags import searchtags
 from searchgrep import searchgrep
+from config import ins
+
+vim.command('nmap<silent><leader>f :py sf = searchfile()<cr>')
+vim.command('nmap<silent><leader>b :py sb = searchbuffer()<cr>')
+vim.command('nmap<silent><leader>t :py st = searchtags()<cr>')
+vim.command('nmap<silent><leader>s :py sg = searchgrep()<cr>')

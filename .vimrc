@@ -40,11 +40,6 @@ nmap<leader>di :!svn di <C-R>%<cr>
 
 "Python
 pyfile ~/.vim/source.py
-"FindFile
-nmap<silent><leader>f :py searchFile = searchfile()<cr>
-nmap<silent><leader>b :py searchBuffer = searchbuffer()<cr>
-nmap<silent><leader>t :py searchTags = searchtags()<cr>
-nmap<silent><leader>s :py searchGrep = searchgrep()<cr>
 
 "OmniCppComplete
 set nocp

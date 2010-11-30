@@ -8,7 +8,7 @@ from searchvim import searchvim
 class searchfile(searchvim):
 
     def __init__(self):
-        searchvim.__init__(self, 'searchFile')
+        searchvim.__init__(self)
 
     def handleselect(self, line):
         vim.command('silent!edit %s' % self.lines[line])
