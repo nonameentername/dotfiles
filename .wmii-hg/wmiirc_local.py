@@ -11,14 +11,6 @@ import time
 import wmiirc
 from wmiirc import *
 
-def start(name):
-    p1 = Popen(['ps', 'aux'], stdout=PIPE)
-    p2 = Popen(['grep', name], stdin=p1.stdout, stdout=PIPE)
-    p3 = Popen(['grep', '-v', 'grep'], stdin=p2.stdout, stdout=PIPE)
-    output = p3.communicate()[0].splitlines()
-    if not output:
-        os.system('%s &' % name)
-
 def terminal():
     title = datetime.datetime.now().strftime('%I%M%S')
     p1 = Popen(['screen', '-ls'], stdout=PIPE)
@@ -43,8 +35,6 @@ wmii['normcolors'] = '#000000', '#ffffff', '#0a67a3'
 wmii['focuscolors'] = '#ffffff', '#0a67a3', '#000000'
 wmii['border'] = 0
 
-firefox = 'wmiir', 'setsid', 'firefox', '.'
-
 keys.bind('main', (
     ('%(mod)s-Return', "Launch a terminal",
         lambda k: terminal()),
@@ -58,14 +48,8 @@ keys.bind('main', (
         lambda k: Tag('sel').select('toggle')),
     ('%(mod)s-Shift-b',     "Toggle selected client between floating and managed layers",
         lambda k: Tag('sel').send(Client('sel'), 'toggle')),
-    ('%(mod)s-w', "Launch a firefox",
-        lambda k: call(*firefox, background=True)),
 ))
 
 @defmonitor
 def time(self):
     return wmii.cache['focuscolors'], datetime.datetime.now().strftime('%a %b %d %I:%M:%S %Y')
-
-#start('gnome-settings-daemon')
-#start('pidgin')
-#start('firefox')
