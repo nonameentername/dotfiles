@@ -14,6 +14,7 @@ class searchgrep(searchvim):
         vim.command('call inputrestore()')
         self.search = vim.eval('user_input')
         self.delete = False
+        self.ignorelist = ['.*pyc$', '.*\.svn.*']
 
         if self.search:
             searchvim.__init__(self)

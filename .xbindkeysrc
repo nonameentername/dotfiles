@@ -1,3 +1,5 @@
 #-*- shell-script -*-
 "firefox ."
 Mod4 + w
+"screen -S ubuntu-session -X select"
+Control+Mod2 + slash

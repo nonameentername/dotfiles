@@ -8,8 +8,8 @@ set hidden
 set incsearch
 set ignorecase
 set smartcase
-set wildmenu
-"set wildmode=list:longest
+"set wildmenu
+set wildmode=list:longest
 set autoindent
 set dir=/tmp
 set cot-=preview
