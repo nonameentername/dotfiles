@@ -12,11 +12,12 @@ export DEVKITARM=$DEVKITPRO/devkitARM
 export PATH=/usr/local/bin/eclipse:$PATH
 export PATH=$SDK_ROOT/tools:$DEVKITARM/bin:$PATH
 export PATH=$HOME/source/android-sdk/tools:$PATH
-export PATH=$HOME/source/ndk/build/prebuilt/linux-x86/arm-eabi-4.4.0/bin:$PATH
+export PATH=$HOME/source/android-ndk/build/prebuilt/linux-x86/arm-eabi-4.4.0/bin:$PATH
 export PATH=$HOME/usr/bin:$PATH
 export PATH=.:$PATH
 
 export PYTHONSTARTUP=$HOME/.pythonrc
+export PYTHONPATH=$HOME/usr/lib/python2.6/site-packages
 
 alias wicd-client="wicd-client --no-tray"
 alias pysmell="PYTHONPATH=$HOME/usr/lib/python2.6/site-packages pysmell"
