@@ -28,6 +28,8 @@ class searchvim:
         vim.command('setlocal bufhidden=hide')
         vim.command('setlocal noswapfile')
 
+        vim.command('nmap <silent><buffer><C-k> :py ins["%s"].up()<cr>' % self.name)
+        vim.command('nmap <silent><buffer><C-j> :py ins["%s"].down()<cr>' % self.name)
         vim.command('nmap <silent><buffer><BS> :py ins["%s"].backspace()<cr>' % self.name)
         vim.command('nmap <silent><buffer><Enter> :py ins["%s"].enter()<cr>' % self.name)
         vim.command('nmap <silent><buffer><Esc> :py ins["%s"].exit()<cr>' % self.name)
@@ -45,6 +47,14 @@ class searchvim:
             vim.command('nmap <silent><buffer><S-%s> :py ins["%s"].keydown("%s".upper())<cr>' % (chr(num), self.name, chr(num)))
     
         self.update()
+
+    def up(self):
+        if self.w.cursor[0] > 1:
+            self.w.cursor = self.w.cursor[0]-1, self.w.cursor[1],
+
+    def down(self):
+        if self.w.cursor[0]+1 < len(self.b):
+            self.w.cursor = self.w.cursor[0]+1, self.w.cursor[1],
 
     def exit(self):
         vim.command('silent!bd! %s' % self.name)
