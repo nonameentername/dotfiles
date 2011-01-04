@@ -53,7 +53,7 @@ class searchvim:
             self.w.cursor = self.w.cursor[0]-1, self.w.cursor[1],
 
     def down(self):
-        if self.w.cursor[0]+1 < len(self.b):
+        if self.w.cursor[0] < len(self.b):
             self.w.cursor = self.w.cursor[0]+1, self.w.cursor[1],
 
     def exit(self):
