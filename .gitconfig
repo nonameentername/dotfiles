@@ -1,0 +1,11 @@
+[user]
+	name = werner mendizabal
+	email = werner.mendizabal@tecunhuman.com
+[merge]
+	tool = vimdiff
+[core]
+	editor = vi
+[alias]
+	st = status
+	ci = commit
+	vimdiff = difftool -y -t vimdiff

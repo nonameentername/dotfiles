@@ -41,6 +41,17 @@ nmap<leader>di :!svn di <C-R>%<cr>
 "Python
 pyfile ~/.vim/source.py
 
+fun! Pcomp(ArgLead, CmdLine, CursorPos)
+python << EOF
+argLead   = vim.eval('a:ArgLead')
+cmdLine   = vim.eval('a:CmdLine')
+cursorPos = vim.eval('a:CursorPos')
+result = pycomp(argLead, cmdLine, cursorPos)
+vim.command('let result="{0}"'.format(result))
+EOF
+    return result
+endfun
+
 "OmniCppComplete
 set nocp
 filetype plugin on
@@ -62,5 +73,6 @@ map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR>
 "autocmd Filetype java setlocal omnifunc=javacomplete#Complete 
 
 let g:EclimJavaSearchSingleResult = 'edit'
+let g:EclimMakeLCDWarning = 1
 
 autocmd Filetype python setlocal omnifunc=pythoncomplete#Complete 

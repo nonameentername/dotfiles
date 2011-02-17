@@ -31,8 +31,8 @@ background = '#333333'
 floatbackground='#222222'
 
 wmii['font'] = 'drift,-*-fixed-medium-r-*-*-12-*-*-*-*-*-*-*'
-wmii['normcolors'] = '#000000', '#ffffff', '#0a67a3'
-wmii['focuscolors'] = '#ffffff', '#0a67a3', '#000000'
+wmii['normcolors'] = '#000000', '#ffffff', '#444444'
+wmii['focuscolors'] = '#ffffff', '#444444', '#000000'
 wmii['border'] = 0
 
 keys.bind('main', (
