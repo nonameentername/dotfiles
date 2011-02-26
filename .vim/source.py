@@ -13,7 +13,7 @@ from searchbuffer import searchbuffer
 from searchtags import searchtags
 from searchgrep import searchgrep
 from config import ins
-from ipython import *
+#from ipython import *
 
 vim.command('nmap<silent><leader>f :py sf = searchfile()<cr>')
 vim.command('nmap<silent><leader>b :py sb = searchbuffer()<cr>')

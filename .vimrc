@@ -38,6 +38,13 @@ nmap<leader>r :source ~/.vimrc<cr>
 nmap<leader>st :!svn st<cr>
 nmap<leader>di :!svn di <C-R>%<cr>
 
+"xml
+function FormatXml()
+    :%!xmllint --format -
+    :set filetype=xml
+endfunction
+nmap<leader>x :exec FormatXml()<cr>
+
 "Python
 pyfile ~/.vim/source.py
 
