@@ -40,10 +40,14 @@ nmap<leader>di :!svn di <C-R>%<cr>
 
 "xml
 function FormatXml()
-    :%!xmllint --format -
+    :%! export XMLLINT_INDENT='    '; xmllint --format -
     :set filetype=xml
 endfunction
 nmap<leader>x :exec FormatXml()<cr>
+
+"java
+nmap<leader>i :JavaImport<cr>
+nmap<leader>j :JavaSearchContext<cr>
 
 "Python
 pyfile ~/.vim/source.py
