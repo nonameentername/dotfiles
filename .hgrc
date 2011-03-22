@@ -5,6 +5,7 @@ verbose  = True
 [extensions]
 hgext.purge = !
 hgext.extdiff =
+color=
 
 [extdiff]
 cmd.vimdiff = 
