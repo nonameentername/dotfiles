@@ -124,7 +124,9 @@ events.bind({
 @apply
 class Actions(event.Actions):
     def rehash(self, args=''):
-        program_menu.choices = program_list(os.environ['PATH'].split(':'))
+        lst = os.environ['PATH'].split(':')
+        lst.insert(0, os.path.expanduser('~') + '/usr/bin')
+        program_menu.choices = program_list(lst)
     def showkeys(self, args=''):
         message(keys.help)
     def quit(self, args=''):
