@@ -1,1 +1,4 @@
 set focuscontent
+
+cmap <C-p> <Up>
+cmap <C-n> <Down>
