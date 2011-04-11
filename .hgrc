@@ -1,6 +1,7 @@
 [ui]
 username = Werner Mendizabal <nonameentername@gmail.com>
 verbose  = True
+merge = vimdiff 
 
 [extensions]
 hgext.purge = !
@@ -13,3 +14,7 @@ cmd.vimdiff =
 [alias]
 vi = vimdiff
 vim = vimdiff
+
+[merge-tools]
+vimdiff.executable = vim
+vimdiff.args = -d $base $local $output $other +close +close

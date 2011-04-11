@@ -63,6 +63,25 @@ EOF
     return result
 endfun
 
+"CleverTab
+function! SuperCleverTab()
+    if strpart(getline('.'), 0, col('.') - 1) =~ '^\s*$'
+        return "\<Tab>"
+    else
+        if &omnifunc != ''
+            return "\<C-X>\<C-O>"
+        elseif &dictionary != ''
+            return "\<C-K>"
+        else
+            return "\<C-N>"
+        endif
+    endif
+endfunction
+
+inoremap <Tab> <C-R>=SuperCleverTab()<cr>
+
+"set spell
+
 "OmniCppComplete
 set nocp
 filetype plugin on
@@ -86,4 +105,7 @@ map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR>
 let g:EclimJavaSearchSingleResult = 'edit'
 let g:EclimMakeLCDWarning = 1
 
-autocmd Filetype python setlocal omnifunc=pythoncomplete#Complete 
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
