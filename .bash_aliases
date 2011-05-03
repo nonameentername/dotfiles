@@ -34,4 +34,4 @@ PS1="[\u@\h:\#]$ "
 export VISUAL=vi
 export EDITOR=vi
 
-alias sudo='sudo env PATH=$PATH'
+#alias sudo='sudo env PATH=$PATH'

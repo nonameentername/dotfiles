@@ -5,8 +5,11 @@ import vim
 #sys.stderr = file('/dev/null')
 #import rlcompleter as completer
 sys.path.append(os.path.join(os.path.expanduser('~'), '.vim'))
-sys.path.append(os.path.join(os.path.expanduser('~'), 'usr/lib/python'))
-sys.path.append(os.path.join(os.path.expanduser('~'), 'usr/lib/python2.6/site-packages'))
+
+if os.environ.has_key('VIRTUAL_ENV'):
+    path = os.environ['VIRTUAL_ENV'] + '/lib/python2.6/site-packages'
+    sys.path.append(path)
+
 #from IPython.completer import Completer
 from searchfile import searchfile
 from searchbuffer import searchbuffer
