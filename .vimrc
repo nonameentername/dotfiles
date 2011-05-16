@@ -89,7 +89,7 @@ set nocp
 filetype plugin on
 
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-set completeopt=menu,menuone
+set completeopt=longest,menuone
 
 let OmniCpp_MayCompleteDot = 1
 let OmniCpp_MayCompleteArrow = 1
