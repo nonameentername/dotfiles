@@ -24,10 +24,6 @@ vim.command('nmap<silent><leader>t :py st = searchtags()<cr>')
 vim.command('nmap<silent><leader>s :py sg = searchgrep()<cr>')
 vim.command('nmap<silent><leader>m :py run()<cr>')
 
-config = 'manage.py'
-if os.path.isfile(config):
-    import setdjango
-
 """
 def pycomp(argLead, cmdLine, cursorPos):
     try:
