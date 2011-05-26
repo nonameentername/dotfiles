@@ -49,8 +49,6 @@ nmap<leader>x :exec FormatXml()<cr>
 nmap<leader>i :JavaImport<cr>
 nmap<leader>j :JavaSearchContext<cr>
 
-"Python
-pyfile ~/.vim/source.py
 
 fun! Pcomp(ArgLead, CmdLine, CursorPos)
 python << EOF
