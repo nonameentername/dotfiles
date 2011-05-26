@@ -27,6 +27,7 @@ export PYTHONPATH=$HOME/usr/lib/python2.6/site-packages
 
 alias wicd-client="wicd-client --no-tray"
 alias pysmell="PYTHONPATH=$HOME/usr/lib/python2.6/site-packages pysmell"
+alias gohome="ssh -p 33323 home"
 
 #Terminal prompt
 PS1="[\u@\h:\#]$ "
