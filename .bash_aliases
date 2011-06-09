@@ -36,3 +36,4 @@ export VISUAL=vi
 export EDITOR=vi
 
 #alias sudo='sudo env PATH=$PATH'
+alias tree="tree -C | less -R"
