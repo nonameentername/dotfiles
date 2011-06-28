@@ -34,10 +34,6 @@ nmap<leader><tab> :buffer
 "reload
 nmap<leader>r :source ~/.vimrc<cr>
 
-"Subversion
-nmap<leader>st :!svn st<cr>
-nmap<leader>di :!svn di <C-R>%<cr>
-
 "xml
 function FormatXml()
     :%! export XMLLINT_INDENT='    '; xmllint --format -
@@ -48,18 +44,6 @@ nmap<leader>x :exec FormatXml()<cr>
 "java
 nmap<leader>i :JavaImport<cr>
 nmap<leader>j :JavaSearchContext<cr>
-
-
-fun! Pcomp(ArgLead, CmdLine, CursorPos)
-python << EOF
-argLead   = vim.eval('a:ArgLead')
-cmdLine   = vim.eval('a:CmdLine')
-cursorPos = vim.eval('a:CursorPos')
-result = pycomp(argLead, cmdLine, cursorPos)
-vim.command('let result="{0}"'.format(result))
-EOF
-    return result
-endfun
 
 "CleverTab
 function! SuperCleverTab()
@@ -103,6 +87,7 @@ map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR>
 "autocmd Filetype java setlocal omnifunc=javacomplete#Complete 
 
 let g:EclimJavaSearchSingleResult = 'edit'
+let g:EclimJavaCompleteCaseSensitive = 1
 let g:EclimMakeLCDWarning = 1
 
 autocmd FileType python set completefunc=pysmell#Complete
