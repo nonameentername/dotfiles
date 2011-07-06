@@ -87,7 +87,6 @@ map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR>
 "autocmd Filetype java setlocal omnifunc=javacomplete#Complete 
 
 let g:EclimJavaSearchSingleResult = 'edit'
-let g:EclimJavaCompleteCaseSensitive = 1
 let g:EclimMakeLCDWarning = 1
 
 autocmd FileType python set completefunc=pysmell#Complete

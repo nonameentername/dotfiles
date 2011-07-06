@@ -15,3 +15,5 @@
 	interactive = auto
 	status = auto
 	diff = auto
+[diff]
+	tool = vimdiff

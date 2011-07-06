@@ -3,3 +3,9 @@
 Mod4 + w
 "screen -S ubuntu-session -X select"
 Control+Mod2 + slash
+
+"screen -S ubuntu-session -X copy"
+Control+Shift+Mod2 + c
+
+"screen -S ubuntu-session -X paste ."
+Control+Shift+Mod2 + Insert
