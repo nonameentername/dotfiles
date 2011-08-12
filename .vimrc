@@ -66,31 +66,23 @@ inoremap <Tab> <C-R>=SuperCleverTab()<cr>
 
 "set spell
 
-"OmniCppComplete
-set nocp
 filetype plugin on
 
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 set completeopt=longest,menuone
-
-let OmniCpp_MayCompleteDot = 1
-let OmniCpp_MayCompleteArrow = 1
-let OmniCpp_MayCompleteScope = 1
-let OmniCpp_SelectFirstItem = 2
-let OmniCpp_NamespaceSearch = 2
-let OmniCpp_ShowPrototypeInAbbr = 1
-
-map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR>
-"set tags+=./tags
-
-"javacomplete
-"autocmd Filetype java setlocal omnifunc=javacomplete#Complete 
 
 let g:EclimJavaSearchSingleResult = 'edit'
 let g:EclimMakeLCDWarning = 1
 
+let g:rubycomplete_buffer_loading = 1
+let g:rubycomplete_rails = 1
+let g:rubycomplete_classes_in_global = 1
+
 autocmd FileType python set completefunc=pysmell#Complete
 autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType ruby set omnifunc=rubycomplete#Complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+
+"improve autocomplete menu color
+highlight Pmenu ctermbg=255 gui=bold
