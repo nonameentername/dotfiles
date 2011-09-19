@@ -26,8 +26,14 @@ export PYTHONSTARTUP=$HOME/.pythonrc
 export PYTHONPATH=$HOME/usr/lib/python2.6/site-packages
 
 alias wicd-client="wicd-client --no-tray"
-alias pysmell="PYTHONPATH=$HOME/usr/lib/python2.6/site-packages pysmell"
 alias gohome="ssh -p 33323 home"
+
+#bash eternal history
+export HISTTIMEFORMAT="%s "
+PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ; }"'echo $$ $USER \
+               "$(history 1)" >> ~/.bash_eternal_history'
+
+export HISTSIZE=2147483647
 
 #Terminal prompt
 PS1="[\u@\h:\#]$ "
