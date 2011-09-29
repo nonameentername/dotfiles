@@ -1,11 +1,12 @@
 #-*- shell-script -*-
 "firefox ."
 Mod4 + w
-"screen -S ubuntu-session -X select"
+
+"xvkbd -xsendevent -text '\Ca\[apostrophe]'"
 Control+Mod2 + slash
 
-"screen -S ubuntu-session -X copy"
+"xvkbd -xsendevent -text '\Ca\[bracketleft]'"
 Control+Shift+Mod2 + c
 
-"screen -S ubuntu-session -X paste ."
+"xvkbd -xsendevent -text '\Ca\[bracketright]'"
 Control+Shift+Mod2 + Insert

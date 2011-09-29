@@ -50,14 +50,10 @@ function! SuperCleverTab()
     if strpart(getline('.'), 0, col('.') - 1) =~ '^\s*$'
         return "\<Tab>"
     else
-        if &completefunc != ''
-            return "\<C-X>\<C-U>"
-        elseif &omnifunc != ''
-            return "\<C-X>\<C-O>"
-        elseif &dictionary != ''
+        if &dictionary != ''
             return "\<C-K>"
         else
-            return "\<C-N>"
+            return "\<C-P>"
         endif
     endif
 endfunction
@@ -68,7 +64,7 @@ inoremap <Tab> <C-R>=SuperCleverTab()<cr>
 
 filetype plugin on
 
-set completeopt=longest,menuone
+set completeopt=menuone
 
 let g:EclimJavaSearchSingleResult = 'edit'
 let g:EclimMakeLCDWarning = 1

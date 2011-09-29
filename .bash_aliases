@@ -1,7 +1,7 @@
 export JAVA_HOME=/usr/lib/jvm/java-6-sun
 export IDEA_JDK=$JAVA_HOME
 #export M2_HOME=/usr/share/maven2
-export M2_HOME=$HOME/usr/bin/apache-maven-3.0/
+export M2_HOME=$HOME/usr/bin/apache-maven-2.2.1/
 export ANT_HOME=/usr/share/ant
 
 #android
