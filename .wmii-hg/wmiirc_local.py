@@ -30,10 +30,13 @@ def terminal():
 background = '#333333'
 floatbackground='#222222'
 
+
 wmii['font'] = 'drift,-*-fixed-medium-r-*-*-12-*-*-*-*-*-*-*'
-wmii['normcolors'] = '#000000', '#ffffff', '#444444'
-wmii['focuscolors'] = '#ffffff', '#444444', '#000000'
-wmii['border'] = 0
+
+# Colors tuples: "<text> <background> <border>"
+wmii['focuscolors'] = '#ffffff', '#555555', '#777777'
+wmii['normcolors'] = '#bbbbbb', '#222222', '#000000'
+wmii['border'] = 1
 
 keys.bind('main', (
     ('%(mod)s-Return', "Launch a terminal",
