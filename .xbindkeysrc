@@ -2,9 +2,6 @@
 "firefox ."
 Mod4 + w
 
-"xvkbd -xsendevent -text '\Ca\[apostrophe]'"
-Control+Mod2 + slash
-
 "xvkbd -xsendevent -text '\Ca\[bracketleft]'"
 Control+Shift+Mod2 + c
 

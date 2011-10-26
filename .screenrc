@@ -3,3 +3,5 @@ startup_message off
 vbell off
 defscrollback 10000
 caption always "%t"
+
+bindkey "^_" select
