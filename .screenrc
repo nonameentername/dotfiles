@@ -4,4 +4,6 @@ vbell off
 defscrollback 10000
 caption always "%t"
 
-bindkey "^_" select
+bindkey "^_" select   # Ctrl-/
+bindkey "^[C" copy    # Alt-Shift-C
+bindkey "^[I" paste . # Alt-Shift-I

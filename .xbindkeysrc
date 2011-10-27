@@ -1,9 +1,3 @@
 #-*- shell-script -*-
 "firefox ."
 Mod4 + w
-
-"xvkbd -xsendevent -text '\Ca\[bracketleft]'"
-Control+Shift+Mod2 + c
-
-"xvkbd -xsendevent -text '\Ca\[bracketright]'"
-Control+Shift+Mod2 + Insert
