@@ -5,8 +5,9 @@ export M2_HOME=$HOME/usr/bin/apache-maven-3.0
 export ANT_HOME=/usr/share/ant
 
 #android
-export SDK_ROOT=/usr/local/include/android
-export ANDROID_NDK_ROOT=$HOME/source/android-ndk/
+export ANDROID_SDK=$HOME/source/android-sdk
+export ANDROID_NDK=$HOME/source/android-ndk
+export ANDROID_NDK_ROOT=$ANDROID_NDK
 export ANDROIDTOOLCHAIN=$HOME/source/android-cmake/toolchain/android.toolchain.cmake
 export ANDROID_NDK_TOOLCHAIN_ROOT=$HOME/source/android-toolchain
 
@@ -14,12 +15,17 @@ export ANDROID_NDK_TOOLCHAIN_ROOT=$HOME/source/android-toolchain
 export DEVKITPRO=/usr/local/include/devkitPro
 export DEVKITARM=$DEVKITPRO/devkitARM
 
+#golang
+export GOROOT=$HOME/source/go/
+
 export PATH=/usr/local/bin/eclipse:$PATH
-export PATH=$SDK_ROOT/tools:$DEVKITARM/bin:$PATH
 export PATH=$HOME/source/android-sdk/tools:$PATH
+export PATH=$HOME/source/android-ndk/:$PATH
 export PATH=$HOME/source/android-ndk/build/prebuilt/linux-x86/arm-eabi-4.4.0/bin:$PATH
+export PATH=$HOME/source/android-sdk/platform-tools:$PATH
 export PATH=$HOME/source/android-toolchain/bin:$PATH
 export PATH=$HOME/usr/bin:$PATH
+export PATH=$PATH:$GOROOT/bin
 export PATH=.:$PATH
 
 export PYTHONSTARTUP=$HOME/.pythonrc
@@ -43,4 +49,4 @@ export VISUAL=vi
 export EDITOR=vi
 
 #alias sudo='sudo env PATH=$PATH'
-alias tree="tree -C | less -R"
+alias ltree="tree -C | less -R"

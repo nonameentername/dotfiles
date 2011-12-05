@@ -45,6 +45,8 @@ nmap<leader>x :exec FormatXml()<cr>
 nmap<leader>i :JavaImport<cr>
 nmap<leader>j :JavaSearchContext<cr>
 
+nmap<silent><leader>t :TlistToggle<cr>
+
 "CleverTab
 function! SuperCleverTab()
     if strpart(getline('.'), 0, col('.') - 1) =~ '^\s*$'
@@ -73,6 +75,7 @@ let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_rails = 1
 let g:rubycomplete_classes_in_global = 1
 
+autocmd BufRead,BufNewFile Vagrantfile set filetype=ruby
 autocmd FileType python set completefunc=pysmell#Complete
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType ruby set omnifunc=rubycomplete#Complete
@@ -82,3 +85,8 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
 "improve autocomplete menu color
 highlight Pmenu ctermbg=255 gui=bold
+
+highlight DiffAdd term=reverse cterm=bold ctermbg=green ctermfg=white
+highlight DiffChange term=reverse cterm=bold ctermbg=cyan ctermfg=black
+highlight DiffText term=reverse cterm=bold ctermbg=gray ctermfg=black
+highlight DiffDelete term=reverse cterm=bold ctermbg=red ctermfg=black 
