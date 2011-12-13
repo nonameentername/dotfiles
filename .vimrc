@@ -31,6 +31,8 @@ nmap<leader>h :split<cr>
 nmap<leader>v :vsplit<cr>
 nmap<leader><tab> :buffer 
 
+nmap<leader>w :w<cr>
+
 "reload
 nmap<leader>r :source ~/.vimrc<cr>
 
@@ -45,7 +47,7 @@ nmap<leader>x :exec FormatXml()<cr>
 nmap<leader>i :JavaImport<cr>
 nmap<leader>j :JavaSearchContext<cr>
 
-nmap<silent><leader>t :TlistToggle<cr>
+nmap<silent><leader>m :TlistToggle<cr>
 
 "CleverTab
 function! SuperCleverTab()
