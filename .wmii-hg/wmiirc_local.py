@@ -39,6 +39,12 @@ wmii['normcolors'] = '#bbbbbb', '#222222', '#000000'
 wmii['border'] = 1
 
 keys.bind('main', (
+    "Tag actions",
+    ('%(mod)s-slash',       "Change to another tag",
+        lambda k: tags.select(tag_menu())),
+    ('%(mod)s-Shift-slash', "Retag the selected client",
+        lambda k: setattr(Client('sel'), 'tags', tag_menu())),
+
     ('%(mod)s-Return', "Launch a terminal",
         lambda k: terminal()),
     ('%(mod)s-space',      "Open program menu",
