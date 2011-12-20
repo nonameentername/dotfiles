@@ -10,6 +10,7 @@
 	ci = commit
 	co = checkout
 	vimdiff = difftool -y -t vimdiff
+	tree = log --graph --decorate --pretty=oneline --abbrev-commit
 [color]
 	branch = auto
 	interactive = auto
