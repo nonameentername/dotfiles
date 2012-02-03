@@ -47,6 +47,8 @@ nmap<leader>x :exec FormatXml()<cr>
 nmap<leader>i :JavaImport<cr>
 nmap<leader>j :JavaSearchContext<cr>
 
+let Tlist_GainFocus_On_ToggleOpen = 1
+let Tlist_Close_On_Select = 1
 nmap<silent><leader>m :TlistToggle<cr>
 
 "CleverTab
@@ -63,6 +65,10 @@ function! SuperCleverTab()
 endfunction
 
 inoremap <Tab> <C-R>=SuperCleverTab()<cr>
+
+"java complete with ctrl-space
+inoremap <expr> <C-Space> "<C-x><C-u>"
+imap <C-@> <C-Space>
 
 "set spell
 
