@@ -7,13 +7,6 @@ if os.environ.has_key('VIRTUAL_ENV'):
     sys.path.append(path)
 eopython
 
-if exists('$VIRTUAL_ENV')
+if exists('$VIRTUAL_ENV/ropevim.vim')
     source $VIRTUAL_ENV/ropevim.vim
 endif
-
-set completefunc=pysmell#Complete
-set omnifunc=pythoncomplete#Complete
-
-nmap<leader>r :RopeRename<cr>
-nmap<leader>i :RopeAutoImport<cr>
-nmap<leader>j :RopeGotoDefinition<cr>

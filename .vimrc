@@ -30,12 +30,8 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 
-autocmd FileType java source $HOME/.vim/vimrc/java.vim
-autocmd FileType python source $HOME/.vim/vimrc/python.vim
-autocmd FileType ruby source $HOME/.vim/vimrc/ruby.vim
-autocmd FileType xml source $HOME/.vim/vimrc/xml.vim
-
 "improve autocomplete menu color
 highlight Pmenu ctermbg=255 gui=bold
 
 source $HOME/.vim/vimrc/vimdiff.vim
+source $HOME/.vim/vimrc/virtualenv.vim
