@@ -32,6 +32,25 @@ endfunction
 
 inoremap <Tab> <C-R>=SuperCleverTab()<cr>
 
-"complete with ctrl-space
-inoremap <expr> <C-Space> "<C-x><C-u>"
+function! CanComplete(method)
+    let str=strpart(getline('.'), 0, col('.') - 1)
+
+    let length = {a:method}(1, '')
+    let str=strpart(str, length)
+    let list = {a:method}(0, str)
+
+    return len(list) != 0
+endfunction
+
+function! SuperCleverOmni()
+    if CanComplete(&omnifunc)
+        return "\<C-X>\<C-O>"
+    elseif CanComplete(&completefunc)
+        return "\<C-X>\<C-U>"
+    endif
+
+    return ""
+endfunction
+
+inoremap <C-Space> <C-R>=SuperCleverOmni()<cr>
 imap <C-@> <C-Space>
