@@ -33,6 +33,10 @@ endfunction
 inoremap <Tab> <C-R>=SuperCleverTab()<cr>
 
 function! CanComplete(method)
+    if a:method == ''
+        return 0
+    endif
+
     let str=strpart(getline('.'), 0, col('.') - 1)
 
     let length = {a:method}(1, '')
