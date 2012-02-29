@@ -1,7 +1,7 @@
-export JAVA_HOME=/usr/lib/jvm/sun-java-6-jdk
+export JAVA_HOME=/usr/lib/jvm/java-1.6.0-openjdk/
 export IDEA_JDK=$JAVA_HOME
 #export M2_HOME=/usr/share/maven2
-export M2_HOME=$HOME/usr/bin/apache-maven-3.0
+export M2_HOME=$HOME/usr/bin/apache-maven
 export ANT_HOME=/usr/share/ant
 
 #android
@@ -50,3 +50,6 @@ export EDITOR=vi
 
 #alias sudo='sudo env PATH=$PATH'
 alias ltree="tree -C | less -R"
+
+alias format_json="python -m json.tool"
+alias format_xml="xmllint --format -"
