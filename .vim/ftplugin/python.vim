@@ -3,11 +3,11 @@ let g:ropevim_autoimport_modules = ["sys", "os", "shutil", "django.*", "django",
 "let ropevim_extended_complete=1
 
 python << eofpython
-from ropemode.interface import _CodeAssist
-import vim
-
 def rope_omni_complete():
     try:
+        from ropemode.interface import _CodeAssist
+        import vim
+
         _code_assist = _CodeAssist(ropevim._interface, ropevim._env)
         proposals = _code_assist._calculate_proposals()
         update = []

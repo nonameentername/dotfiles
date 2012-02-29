@@ -7,6 +7,6 @@ if os.environ.has_key('VIRTUAL_ENV'):
     sys.path.append(path)
 eopython
 
-if exists('$VIRTUAL_ENV/ropevim.vim')
+if len(glob('$VIRTUAL_ENV/ropevim.vim'))
     source $VIRTUAL_ENV/ropevim.vim
 endif
