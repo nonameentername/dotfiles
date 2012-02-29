@@ -55,7 +55,7 @@ endfun
 "set omnifunc=pythoncomplete#Complete
 
 "<C-ENTER>
-imap <NL> <ESC>:python run_these_lines()<CR>a<CR>
+imap <NL> <C-O>:python run_these_lines()<CR>
 
 nmap<leader>r :RopeRename<cr>
 nmap<leader>i :RopeAutoImport<cr>

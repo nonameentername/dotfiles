@@ -48,6 +48,9 @@ PS1="[\u@\h:\#]$ "
 export VISUAL=vi
 export EDITOR=vi
 
+# to unmap ctrl-s
+stty stop undef
+
 #alias sudo='sudo env PATH=$PATH'
 alias ltree="tree -C | less -R"
 
