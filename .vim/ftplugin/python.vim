@@ -49,10 +49,13 @@ fun! RopeOmniComplete(findstart, base)
     endif
 endfun
 
-set omnifunc=pysmell#Complete
-set completefunc=RopeOmniComplete
+"set omnifunc=pysmell#Complete
+"set completefunc=RopeOmniComplete
 "set completefunc=pysmell#Complete
 "set omnifunc=pythoncomplete#Complete
+
+"<C-ENTER>
+imap <NL> <ESC>:python run_these_lines()<CR>a<CR>
 
 nmap<leader>r :RopeRename<cr>
 nmap<leader>i :RopeAutoImport<cr>
