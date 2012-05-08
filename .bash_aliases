@@ -56,3 +56,4 @@ alias ltree="tree -C | less -R"
 
 alias json="python -m json.tool"
 alias xml="xmllint --format -"
+alias html="tidy -i"

@@ -8,8 +8,10 @@ map<C-L> <C-W>l
 nmap<silent><leader>N :bp<cr>
 nmap<silent><leader>n :bn<cr>
 
-map<leader>y "+y
-map<leader>p "+p
+vnoremap y "+y
+vnoremap Y "+Y
+vnoremap p "+p
+vnoremap P "+P
 
 nmap<leader>h :split<cr>
 nmap<leader>v :vsplit<cr>
