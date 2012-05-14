@@ -7,3 +7,4 @@ caption always "%t"
 bindkey "^_" select   # Ctrl-/
 bindkey "^[C" copy    # Alt-Shift-C
 bindkey "^[I" paste . # Alt-Shift-I
+bind > eval writebuf 'exec /bin/sh -c "xsel -i -b < /tmp/screen-exchange"' 'exec /bin/sh -c "killall xsel"'

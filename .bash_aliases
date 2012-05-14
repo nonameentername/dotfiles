@@ -54,5 +54,6 @@ stty stop undef
 #alias sudo='sudo env PATH=$PATH'
 alias ltree="tree -C | less -R"
 
-alias format_json="python -m json.tool"
-alias format_xml="xmllint --format -"
+alias json="python -m json.tool"
+alias xml="xmllint --format -"
+alias html="tidy -i"

@@ -24,7 +24,7 @@ nmap<silent><leader>m :TlistToggle<cr>
 
 filetype plugin on
 
-set completeopt=menuone
+set completeopt=menuone,longest
 
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
