@@ -1,3 +1,18 @@
 #-*- shell-script -*-
-"firefox ."
-Mod4 + w
+"wmii.py up"
+Mod4 + k
+
+"wmii.py down"
+Mod4 + j
+
+"wmii.py left"
+Mod4 + h
+
+"wmii.py right"
+Mod4 + l
+
+"wmii.py next"
+Mod4 + n
+
+"wmii.py previous"
+Mod4 + p

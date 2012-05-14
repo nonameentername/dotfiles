@@ -1,7 +1,7 @@
-export JAVA_HOME=/usr/lib/jvm/java-1.6.0-openjdk/
+export JAVA_HOME=/usr/lib/jvm/sun-java-6-jdk
 export IDEA_JDK=$JAVA_HOME
 #export M2_HOME=/usr/share/maven2
-export M2_HOME=$HOME/usr/bin/apache-maven
+export M2_HOME=$HOME/usr/bin/apache-maven-3.0
 export ANT_HOME=/usr/share/ant
 
 #android
@@ -24,6 +24,7 @@ export PATH=$HOME/source/android-ndk/:$PATH
 export PATH=$HOME/source/android-ndk/build/prebuilt/linux-x86/arm-eabi-4.4.0/bin:$PATH
 export PATH=$HOME/source/android-sdk/platform-tools:$PATH
 export PATH=$HOME/source/android-toolchain/bin:$PATH
+export PATH=$JAVA_HOME/bin:$PATH
 export PATH=$HOME/usr/bin:$PATH
 export PATH=$PATH:$GOROOT/bin
 export PATH=.:$PATH
@@ -57,3 +58,10 @@ alias ltree="tree -C | less -R"
 alias json="python -m json.tool"
 alias xml="xmllint --format -"
 alias html="tidy -i"
+
+#maven alias
+alias mc="mvn clean compile"
+alias mp="mvn package"
+alias mt="mvn test"
+
+source /home/wmendiza/.virtualenvs/django_bash_completion
