@@ -63,5 +63,3 @@ alias html="tidy -i"
 alias mc="mvn clean compile"
 alias mp="mvn package"
 alias mt="mvn test"
-
-source /home/wmendiza/.virtualenvs/django_bash_completion
