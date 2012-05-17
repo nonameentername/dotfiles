@@ -1,6 +1,5 @@
 [user]
 	name = werner mendizabal
-	email = nonameentername@gmail.com
 [merge]
 	tool = vimdiff
 [core]
