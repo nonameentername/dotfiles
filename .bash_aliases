@@ -60,6 +60,9 @@ alias xml="xmllint --format -"
 alias html="tidy -i"
 
 #maven alias
-alias mc="mvn clean compile"
+alias mcc="mvn clean compile"
+alias mcp="mvn clean package"
+alias mct="mvn clean test"
 alias mp="mvn package"
 alias mt="mvn test"
+alias mtr="mvn tomcat:run"
