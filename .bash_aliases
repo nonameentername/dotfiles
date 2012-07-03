@@ -1,4 +1,4 @@
-export JAVA_HOME=/usr/lib/jvm/sun-java-6-jdk
+export JAVA_HOME=$HOME/usr/sun-java-7-jdk
 export IDEA_JDK=$JAVA_HOME
 #export M2_HOME=/usr/share/maven2
 export M2_HOME=$HOME/usr/bin/apache-maven-3.0
