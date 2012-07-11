@@ -1,4 +1,4 @@
-function FormatXml()
+function! FormatXml()
     :%! export XMLLINT_INDENT='    '; xmllint --format -
     :set filetype=xml
 endfunction
