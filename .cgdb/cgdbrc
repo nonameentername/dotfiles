@@ -1,0 +1,20 @@
+:set arrowstyle=highlight
+:set cgdbmodekey=<PageUp>
+:set autosourcereload
+:set tabstop=4
+:set ignorecase
+:set winsplit=top_big
+
+:map r :run<CR>
+:map c :continue<CR>
+:map f :finish<CR>
+:map <C-n> :next<CR>
+:map s :step<CR>
+:map u :up<CR>
+:map d :down<CR>
+
+:map <C-j> i
+:imap <C-k> <PageUp>
+
+:hi LineHighlight cterm=bold ctermfg=7 ctermbg=4
+:hi SelectedLineNr cterm=bold ctermfg=7 ctermbg=4
