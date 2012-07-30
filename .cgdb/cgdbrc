@@ -1,4 +1,4 @@
-:set arrowstyle=highlight
+:set arrowstyle=arrow
 :set cgdbmodekey=<PageUp>
 :set autosourcereload
 :set tabstop=4
@@ -13,8 +13,7 @@
 :map u :up<CR>
 :map d :down<CR>
 
-:map <C-j> i
 :imap <C-k> <PageUp>
 
-:hi LineHighlight cterm=bold ctermfg=7 ctermbg=4
+:hi Arrow cterm=bold ctermfg=7 ctermbg=4
 :hi SelectedLineNr cterm=bold ctermfg=7 ctermbg=4
