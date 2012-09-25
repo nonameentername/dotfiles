@@ -3,6 +3,7 @@ export IDEA_JDK=$JAVA_HOME
 #export M2_HOME=/usr/share/maven2
 export M2_HOME=$HOME/usr/bin/apache-maven-3.0
 export ANT_HOME=/usr/share/ant
+export LD_LIBRARY_PATH=/home/wmendiza/usr/lib
 
 #android
 export ANDROID_SDK=$HOME/source/android-sdk
@@ -35,6 +36,8 @@ export PYTHONPATH=$HOME/usr/lib/python2.6/site-packages
 alias wicd-client="wicd-client --no-tray"
 alias gdb="gdb -tui"
 alias gohome="ssh -p 33323 home"
+alias ports="netstat -putlan"
+alias tmux="tmux attach || tmux"
 
 #bash eternal history
 export HISTTIMEFORMAT="%s "
@@ -52,7 +55,7 @@ export EDITOR=vi
 # to unmap ctrl-s
 stty stop undef
 
-#alias sudo='sudo env PATH=$PATH'
+#alias sudo="sudo env PATH=$PATH"
 alias ltree="tree -C | less -R"
 
 alias json="python -m json.tool"

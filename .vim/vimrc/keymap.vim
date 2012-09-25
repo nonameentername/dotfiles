@@ -56,5 +56,5 @@ function! SuperCleverOmni()
     return ""
 endfunction
 
-inoremap <C-Space> <C-R>=SuperCleverOmni()<cr>
+inoremap <silent><C-Space> <C-R>=SuperCleverOmni()<cr>
 imap <C-@> <C-Space>
