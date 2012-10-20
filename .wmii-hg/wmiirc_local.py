@@ -12,20 +12,7 @@ import wmiirc
 from wmiirc import *
 
 def terminal():
-    title = datetime.datetime.now().strftime('%I%M%S')
-    p1 = Popen(['screen', '-ls'], stdout=PIPE)
-    p2 = Popen(['grep', 'ubuntu-session'], stdin=p1.stdout, stdout=PIPE)
-    output = p2.communicate()[0]
-    if output:
-        screen_running = True
-    else:
-        screen_running = False
-    if screen_running:
-        os.system('screen -x ubuntu-session -X screen -t %s' % title)
-        os.system('screen -x ubuntu-session -X other')
-        os.system('x-terminal-emulator -e "screen -x ubuntu-session -p %s" &' % title)
-    else:
-        os.system('x-terminal-emulator -e "screen -S ubuntu-session -t %s" &' % title)
+    os.system('x-terminal-emulator -e "tmux" &')
 
 background = '#333333'
 floatbackground='#222222'
