@@ -11,12 +11,8 @@ import time
 import wmiirc
 from wmiirc import *
 
-def terminal():
-    os.system('x-terminal-emulator -e "tmux" &')
-
 background = '#333333'
 floatbackground='#222222'
-
 
 wmii['font'] = 'drift,-*-fixed-medium-r-*-*-12-*-*-*-*-*-*-*'
 
@@ -31,9 +27,6 @@ keys.bind('main', (
         lambda k: tags.select(tag_menu())),
     ('%(mod)s-Shift-slash', "Retag the selected client",
         lambda k: setattr(Client('sel'), 'tags', tag_menu())),
-
-    ('%(mod)s-Return', "Launch a terminal",
-        lambda k: terminal()),
     ('%(mod)s-space',      "Open program menu",
         lambda k: program_menu()),
     ('%(mod)s-p', "Move to the view to the right",
