@@ -33,7 +33,7 @@ autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 
 "improve autocomplete menu color
-highlight Pmenu ctermbg=255 gui=bold
+highlight Pmenu ctermbg=4 gui=bold
 
 highlight clear SpellBad
 highlight SpellBad cterm=underline ctermfg=red
