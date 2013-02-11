@@ -58,3 +58,9 @@ endfunction
 
 inoremap <silent><C-Space> <C-R>=SuperCleverOmni()<cr>
 imap <C-@> <C-Space>
+
+function! FormatXml()
+    :%! export XMLLINT_INDENT='    '; xmllint --format -
+    :set filetype=xml
+endfunction
+nmap<leader>x :exec FormatXml()<cr>
