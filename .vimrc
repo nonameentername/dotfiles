@@ -1,9 +1,10 @@
 syntax on
 set history=1000
 set number
+set tabstop=4
+set softtabstop=4
 set shiftwidth=4
 set expandtab 
-set tabstop=4
 set hidden
 set incsearch
 set ignorecase
@@ -14,6 +15,7 @@ set autoindent
 set dir=/tmp
 set cot-=preview
 set path+=./**
+set linebreak
 
 source $HOME/.vim/vimrc/keymap.vim
 
@@ -28,12 +30,21 @@ filetype plugin on
 
 set completeopt=menuone,longest
 
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+if has("autocmd")
+    autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+    autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+    autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+    autocmd bufwritepost .vimrc source $MYVIMRC
+endif
 
 "improve autocomplete menu color
 highlight Pmenu ctermbg=4 gui=bold
+
+if len(glob('$HOME/.vim/colors/solarized.vim'))
+    se t_Co=16
+    set background=dark
+    colorscheme solarized
+endif
 
 highlight clear SpellBad
 highlight SpellBad cterm=underline ctermfg=red

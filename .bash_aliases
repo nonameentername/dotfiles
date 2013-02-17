@@ -61,6 +61,8 @@ alias json="python -m json.tool"
 alias xml="xmllint --format -"
 alias html="tidy -i"
 
+alias tmux="TERM=screen-256color-bce tmux"
+
 #maven alias
 alias mcc="mvn clean compile"
 alias mcp="mvn clean package"
