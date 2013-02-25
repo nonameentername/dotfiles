@@ -1,0 +1,32 @@
+source "gpg -dq $HOME/.mutt.gpg |"
+
+#gpg -r $my_email -e .mutt
+#shred -xu .mutt
+
+#.mutt:
+#set my_user=
+#set my_pwd=
+#set my_email=
+#set my_smtp=
+#set my_imap=
+
+set from=$my_email
+set imap_user=$my_user
+set imap_pass=$my_pwd
+set smtp_pass=$my_pwd
+
+set smtp_url="smtp://$my_user@$my_smtp"
+set ssl_starttls=yes
+set realname="werner mendizabal"
+set use_from=yes
+
+set folder="imaps://$my_imap"
+set spoolfile="+inbox"
+set record="+sent items"
+set postponed="+drafts"
+
+set header_cache="$HOME/.mutt_header_cache"
+
+set sort=threads
+set sort_browser=reverse-date
+set sort_aux=reverse-date-received
