@@ -40,3 +40,11 @@ mailboxes =inbox
 bind index,pager <esc>k sidebar-prev
 bind index,pager <esc>j sidebar-next
 bind index,pager <esc>o sidebar-open
+
+set sleep_time=0
+
+bind index gg first-entry
+bind index G last-entry
+
+bind index \cu previous-page
+bind index \cd next-page
