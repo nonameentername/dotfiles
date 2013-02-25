@@ -30,3 +30,13 @@ set header_cache="$HOME/.mutt_header_cache"
 set sort=threads
 set sort_browser=reverse-date
 set sort_aux=reverse-date-received
+
+set sidebar_width=24
+set sidebar_visible=yes
+set sidebar_delim='|'
+set sidebar_sort=yes
+mailboxes =inbox
+
+bind index,pager <esc>k sidebar-prev
+bind index,pager <esc>j sidebar-next
+bind index,pager <esc>o sidebar-open
