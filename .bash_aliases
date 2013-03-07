@@ -20,6 +20,7 @@ export DEVKITARM=$DEVKITPRO/devkitARM
 #golang
 export GOROOT=$HOME/source/go/
 
+export PATH=$GRADLE_HOME/bin:$PATH
 export PATH=/usr/local/bin/eclipse:$PATH
 export PATH=$HOME/source/android-sdk/tools:$PATH
 export PATH=$HOME/source/android-ndk/:$PATH
