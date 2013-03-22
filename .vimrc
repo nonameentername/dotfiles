@@ -35,6 +35,7 @@ if has("autocmd")
     autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
     autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
     autocmd bufwritepost .vimrc source $MYVIMRC
+    autocmd BufRead,BufNewFile *.gradle set filetype=groovy
 endif
 
 "improve autocomplete menu color
