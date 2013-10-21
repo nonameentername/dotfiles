@@ -48,3 +48,7 @@ bind index G last-entry
 
 bind index \cu previous-page
 bind index \cd next-page
+
+bind index <f5> sync-mailbox
+
+set mail_check=30

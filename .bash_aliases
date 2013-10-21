@@ -2,7 +2,7 @@ export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
 
 export IDEA_JDK=$JAVA_HOME
 export M2_HOME=$HOME/usr/bin/apache-maven-3.0
-export GRADLE_HOME=$HOME/usr/bin/gradle-1.4
+export GRADLE_HOME=$HOME/usr/bin/gradle-1.7
 export ANT_HOME=/usr/share/ant
 export LD_LIBRARY_PATH=/home/wmendiza/usr/lib
 
@@ -32,9 +32,6 @@ export PATH=$HOME/usr/bin:$PATH
 export PATH=$PATH:$GOROOT/bin
 export PATH=.:$PATH
 
-export PYTHONSTARTUP=$HOME/.pythonrc
-export PYTHONPATH=$HOME/usr/lib/python2.6/site-packages
-
 alias wicd-client="wicd-client --no-tray"
 alias gdb="gdb -tui"
 alias gohome="ssh -p 33323 home"
@@ -62,9 +59,11 @@ alias ltree="tree -C | less -R"
 
 alias json="python -m json.tool"
 alias xml="xmllint --format -"
-alias html="tidy -i"
+alias html="tidy -i --indent-spaces 4"
 
 alias tmux="TERM=screen-256color-bce tmux"
+
+alias idea="_JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel' idea"
 
 #maven alias
 alias mcc="mvn clean compile"
@@ -74,3 +73,15 @@ alias mjr="mvn jetty:run"
 alias mp="mvn package"
 alias mt="mvn test"
 alias mtr="mvn tomcat:run"
+
+#gradle alias
+alias gcb="gradle clean build -x test"
+alias gt="gradle test"
+alias gjr="gradle jettyRun"
+alias gua="gradle uploadArchives"
+
+export PATH="$HOME/.pyenv/bin:$PATH"
+
+if which pyenv > /dev/null; then
+    eval "$(pyenv init -)"
+fi
