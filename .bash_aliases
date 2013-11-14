@@ -1,8 +1,12 @@
-export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
+if [ -f /usr/libexec/java_home ]; then
+    export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
+else
+    export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
+fi
 
 export IDEA_JDK=$JAVA_HOME
-export M2_HOME=$HOME/usr/bin/apache-maven-3.0
-export GRADLE_HOME=$HOME/usr/bin/gradle-1.7
+export M2_HOME=$HOME/usr/bin/apache-maven-3.1.1
+export GRADLE_HOME=$HOME/usr/bin/gradle-1.8
 export ANT_HOME=/usr/share/ant
 export LD_LIBRARY_PATH=/home/wmendiza/usr/lib
 
@@ -40,7 +44,7 @@ alias tmux="tmux attach || tmux"
 
 #bash eternal history
 export HISTTIMEFORMAT="%s "
-PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ; }"'echo $$ $USER \
+PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND}"'echo $$ $USER \
                "$(history 1)" >> ~/.bash_eternal_history'
 
 export HISTSIZE=2147483647
@@ -80,8 +84,13 @@ alias gt="gradle test"
 alias gjr="gradle jettyRun"
 alias gua="gradle uploadArchives"
 
-export PATH="$HOME/.pyenv/bin:$PATH"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
 
 if which pyenv > /dev/null; then
     eval "$(pyenv init -)"
+fi
+
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+    . `brew --prefix`/etc/bash_completion
 fi
