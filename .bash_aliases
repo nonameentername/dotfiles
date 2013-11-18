@@ -91,6 +91,8 @@ if which pyenv > /dev/null; then
     eval "$(pyenv init -)"
 fi
 
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-    . `brew --prefix`/etc/bash_completion
+if which brew > /dev/null; then
+    if [ -f `brew --prefix`/etc/bash_completion ]; then
+        . `brew --prefix`/etc/bash_completion
+    fi
 fi
