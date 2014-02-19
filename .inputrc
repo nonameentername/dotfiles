@@ -1,2 +1,3 @@
 set editing-mode vi
 set keymap vi-insert
+set bell-style off
