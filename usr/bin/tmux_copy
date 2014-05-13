@@ -1,0 +1,12 @@
+#!/bin/bash
+
+OS_NAME=$(uname)
+
+read INPUT
+
+if [ "$OS_NAME" == "Darwin" ];
+then
+    echo $INPUT | reattach-to-user-namespace pbcopy
+else
+    echo $INPUT | xclip -i -selection clipboard
+fi
