@@ -1,4 +1,4 @@
-let g:ropevim_autoimport_modules = ["sys", "os", "shutil", "django.*", "django", ]
+"let g:ropevim_autoimport_modules = ["sys", "os", "shutil", "django.*", "django", ]
 "let ropevim_vim_completion=1
 "let ropevim_extended_complete=1
 

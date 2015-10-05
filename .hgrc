@@ -1,15 +1,18 @@
 [ui]
 username = Werner Mendizabal <nonameentername@gmail.com>
 verbose  = True
-merge = vimdiff 
+merge = vimdiff
 
 [extensions]
 hgext.purge = !
 hgext.extdiff =
 color=
+hgext.bookmarks =
+hggit =
+rebase =
 
 [extdiff]
-cmd.vimdiff = 
+cmd.vimdiff =
 
 [alias]
 vi = vimdiff

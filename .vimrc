@@ -62,3 +62,18 @@ au InsertLeave * match ExtraWhiteSpace /\s\+$/
 vmap <C-c><C-c> <Plug>SendSelectionToTmux
 nmap <C-c><C-c> <Plug>NormalModeSendToTmux
 nmap <C-c>r <Plug>SetTmuxVars
+
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'https://github.com/scrooloose/nerdtree.git'
+Plugin 'git@github.com:nonameentername/searchvim.git'
+
+call vundle#end()
+filetype plugin indent on
+
+map <leader>T :NERDTreeToggle<CR>

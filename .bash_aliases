@@ -22,10 +22,12 @@ export DEVKITPRO=/usr/local/include/devkitPro
 export DEVKITARM=$DEVKITPRO/devkitARM
 
 #golang
-export GOROOT=$HOME/source/go/
+export GOROOT=$HOME/usr/go/
+export GOPATH=$HOME/go
 
 export PATH=$GRADLE_HOME/bin:$PATH
 export PATH=/usr/local/bin/eclipse:$PATH
+export PATH=/usr/local/bin:$PATH
 export PATH=$HOME/source/android-sdk/tools:$PATH
 export PATH=$HOME/source/android-ndk/:$PATH
 export PATH=$HOME/source/android-ndk/build/prebuilt/linux-x86/arm-eabi-4.4.0/bin:$PATH
@@ -83,6 +85,10 @@ alias gcb="gradle clean build -x test"
 alias gt="gradle test"
 alias gjr="gradle jettyRun"
 alias gua="gradle uploadArchives"
+alias ls="ls -F"
+alias fig=docker-compose
+
+export DOCKER_HOST=tcp://localhost:4243
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
@@ -91,8 +97,18 @@ if which pyenv > /dev/null; then
     eval "$(pyenv init -)"
 fi
 
+export RBENV_ROOT="$HOME/.rbenv"
+export PATH="$RBENV_ROOT/bin:$PATH"
+
+if which rbenv > /dev/null; then
+    eval "$(rbenv init -)"
+fi
+
+
 if which brew > /dev/null; then
     if [ -f `brew --prefix`/etc/bash_completion ]; then
         . `brew --prefix`/etc/bash_completion
     fi
 fi
+
+alias vssh='ssh -t vagrant@127.0.0.1 -p 2222 -i $HOME/.vagrant.d/insecure_private_key'
