@@ -1,3 +1,7 @@
+if !has('python')
+    finish
+endif
+
 python << eopython
 import os
 import sys
