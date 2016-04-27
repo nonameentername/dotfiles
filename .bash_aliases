@@ -112,3 +112,10 @@ if which brew > /dev/null; then
 fi
 
 alias vssh='ssh -t vagrant@127.0.0.1 -p 2222 -i $HOME/.vagrant.d/insecure_private_key'
+
+if [[ "$(uname)" = "Darwin" ]]; then
+    alias tmux='tmux -f ~/.tmux-osx.conf'
+else
+    alias tmux='tmux'
+    alias vi=vim.nox-py2
+fi
