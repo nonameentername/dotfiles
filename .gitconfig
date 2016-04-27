@@ -4,6 +4,7 @@
 	tool = vimdiff
 [core]
 	editor = vi
+	excludesfile = ~/.globalignore
 [alias]
 	st = status
 	ci = commit
