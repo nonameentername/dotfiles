@@ -10,7 +10,9 @@ set incsearch
 set ignorecase
 set smartcase
 "set wildmenu
-set wildmode=list:longest
+set wildmode=longest:full,full
+set wildignorecase
+set path+=**
 set autoindent
 set dir=/tmp
 set cot-=preview
@@ -23,6 +25,7 @@ let Tlist_GainFocus_On_ToggleOpen = 1
 let Tlist_Close_On_Select = 1
 let Tlist_WinWidth = 70
 nmap<silent><leader>m :TlistToggle<cr>
+nnoremap <CR> :noh<CR><CR>
 
 "set spell
 
@@ -71,12 +74,13 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'https://github.com/scrooloose/nerdtree.git'
+Plugin 'git://github.com/tpope/vim-fugitive.git'
 Plugin 'git@github.com:nonameentername/searchvim.git'
 Plugin 'Rykka/InstantRst'
 Plugin 'https://github.com/jgdavey/tslime.vim.git'
 Plugin 'kassio/neoterm'
 Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'OmniSharp/omnisharp-vim'
+Plugin 'jdonaldson/vaxe'
 
 call vundle#end()
 filetype plugin indent on
@@ -93,4 +97,9 @@ nmap <C-c>r <Plug>SetTmuxVars
 if has("nvim")
     set inccommand=nosplit
     set clipboard=unnamedplus
+    Plugin 'OmniSharp/omnisharp-vim'
 endif
+
+vmap <C-c><C-c> <Plug>SendSelectionToTmux
+nmap <C-c><C-c> <Plug>NormalModeSendToTmux
+nmap <C-c>r <Plug>SetTmuxVars

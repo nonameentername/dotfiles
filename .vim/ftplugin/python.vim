@@ -15,3 +15,8 @@ nmap<leader>i :RopeAutoImport<cr>
 nmap<leader>j :RopeGotoDefinition<cr>
 
 set colorcolumn=80
+
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab

@@ -1,11 +1,11 @@
 if [ -f /usr/libexec/java_home ]; then
     export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 else
-    export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
+    export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 fi
 
 export IDEA_JDK=$JAVA_HOME
-export M2_HOME=$HOME/usr/bin/apache-maven-3.1.1
+export M2_HOME=$HOME/usr/bin/apache-maven-3.3.9
 export GRADLE_HOME=$HOME/usr/bin/gradle-1.8
 export ANT_HOME=/usr/share/ant
 export LD_LIBRARY_PATH=/home/wmendiza/usr/lib
@@ -85,7 +85,6 @@ alias gcb="gradle clean build -x test"
 alias gt="gradle test"
 alias gjr="gradle jettyRun"
 alias gua="gradle uploadArchives"
-alias ls="ls -F"
 alias fig=docker-compose
 
 export PYENV_ROOT="$HOME/.pyenv"
@@ -113,9 +112,12 @@ alias vssh='ssh -t vagrant@127.0.0.1 -p 2222 -i $HOME/.vagrant.d/insecure_privat
 
 if [[ "$(uname)" = "Darwin" ]]; then
     alias tmux='TERM=screen-256color-bce tmux -f ~/.tmux-osx.conf'
+    alias vi=nvim
+    alias vim=nvim
 else
     alias tmux='tmux'
-    alias vi=vim.nox-py2
+    alias vi=nvim
+    alias vim=nvim
 fi
 
 if [ -f $HOME/.private_aliases ]; then
