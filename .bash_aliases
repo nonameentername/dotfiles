@@ -117,3 +117,7 @@ else
     alias tmux='tmux'
     alias vi=vim.nox-py2
 fi
+
+if [ -f $HOME/.private_aliases ]; then
+    source $HOME/.private_aliases
+fi

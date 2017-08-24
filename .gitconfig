@@ -1,9 +1,10 @@
 [user]
 	name = werner mendizabal
+	email = nonameentername@gmail.com
 [merge]
 	tool = vimdiff
 [core]
-	editor = vi
+	editor = /usr/bin/vim
 	excludesfile = ~/.globalignore
 [alias]
 	st = status
@@ -20,3 +21,9 @@
 	tool = vimdiff
 [push]
 	default = simple
+[gitreview]
+	username = nonameentername
+[remote-hg]
+	hg-git-compat = true
+[hub]
+	protocol = https
