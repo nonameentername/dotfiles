@@ -4,7 +4,7 @@ set number
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-set expandtab 
+set expandtab
 set hidden
 set incsearch
 set ignorecase
@@ -72,8 +72,25 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'https://github.com/scrooloose/nerdtree.git'
 Plugin 'git@github.com:nonameentername/searchvim.git'
+Plugin 'Rykka/InstantRst'
+Plugin 'https://github.com/jgdavey/tslime.vim.git'
+Plugin 'kassio/neoterm'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'OmniSharp/omnisharp-vim'
 
 call vundle#end()
 filetype plugin indent on
 
 map <leader>T :NERDTreeToggle<CR>
+
+let g:tslime_always_current_session = 1
+let g:tslime_always_current_window = 1
+
+vmap <C-c><C-c> <Plug>SendSelectionToTmux
+nmap <C-c><C-c> <Plug>NormalModeSendToTmux
+nmap <C-c>r <Plug>SetTmuxVars
+
+if has("nvim")
+    set inccommand=nosplit
+    set clipboard=unnamedplus
+endif

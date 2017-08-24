@@ -1,5 +1,5 @@
 if [ -f /usr/libexec/java_home ]; then
-    export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
+    export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 else
     export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
 fi
@@ -88,8 +88,6 @@ alias gua="gradle uploadArchives"
 alias ls="ls -F"
 alias fig=docker-compose
 
-export DOCKER_HOST=tcp://localhost:4243
-
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 
@@ -114,7 +112,7 @@ fi
 alias vssh='ssh -t vagrant@127.0.0.1 -p 2222 -i $HOME/.vagrant.d/insecure_private_key'
 
 if [[ "$(uname)" = "Darwin" ]]; then
-    alias tmux='tmux -f ~/.tmux-osx.conf'
+    alias tmux='TERM=screen-256color-bce tmux -f ~/.tmux-osx.conf'
 else
     alias tmux='tmux'
     alias vi=vim.nox-py2
