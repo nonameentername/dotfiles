@@ -27,12 +27,14 @@ export GOPATH=$HOME/go
 
 export PATH=$GRADLE_HOME/bin:$PATH
 export PATH=/usr/local/bin/eclipse:$PATH
+export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/bin:$PATH
 export PATH=$HOME/source/android-sdk/tools:$PATH
-export PATH=$HOME/source/android-ndk/:$PATH
+export PATH=$HOME/source/android-ndk:$PATH
 export PATH=$HOME/source/android-ndk/build/prebuilt/linux-x86/arm-eabi-4.4.0/bin:$PATH
 export PATH=$HOME/source/android-sdk/platform-tools:$PATH
 export PATH=$HOME/source/android-toolchain/bin:$PATH
+export PATH=$HOME/source/google-cloud-sdk/bin:$PATH
 export PATH=$GRADLE_HOME/bin:$PATH
 export PATH=$HOME/usr/bin:$PATH
 export PATH=$PATH:$GOROOT/bin
@@ -52,7 +54,9 @@ PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND}"'echo $$ $USER \
 export HISTSIZE=2147483647
 
 #Terminal prompt
-PS1="[\u@\h:\#]$ "
+GREEN="\[$(tput setaf 2)\]"
+RESET="\[$(tput sgr0)\]"
+PS1="[\u@\h:\#${GREEN}\w${RESET}]$ "
 
 export VISUAL=vi
 export EDITOR=vi
@@ -71,6 +75,8 @@ alias tmux="TERM=screen-256color-bce tmux"
 
 alias idea="_JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel' idea"
 
+alias rng=ranger
+
 #maven alias
 alias mcc="mvn clean compile"
 alias mcp="mvn clean package"
@@ -85,7 +91,16 @@ alias gcb="gradle clean build -x test"
 alias gt="gradle test"
 alias gjr="gradle jettyRun"
 alias gua="gradle uploadArchives"
-alias fig=docker-compose
+
+#docker alias
+alias dc="docker-compose"
+alias dcu="docker-compose up"
+alias dcr="docker-compose rm -f"
+
+#git alias
+alias gs="git status"
+
+#identity alias
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"

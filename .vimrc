@@ -10,8 +10,10 @@ set incsearch
 set ignorecase
 set smartcase
 "set wildmenu
-set wildmode=longest:full,full
-set wildignorecase
+set wildmode=list:longest
+if exists("&wildignorecase")
+    set wildignorecase
+endif
 set path+=**
 set autoindent
 set dir=/tmp
@@ -73,14 +75,18 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'https://github.com/scrooloose/nerdtree.git'
-Plugin 'git://github.com/tpope/vim-fugitive.git'
-Plugin 'git@github.com:nonameentername/searchvim.git'
-Plugin 'Rykka/InstantRst'
+"Plugin 'https://github.com/scrooloose/nerdtree.git'
+Plugin 'tpope/vim-fugitive.git'
+if has("python")
+    Plugin 'git@github.com:nonameentername/searchvim.git'
+endif
+"Plugin 'Rykka/InstantRst'
 Plugin 'https://github.com/jgdavey/tslime.vim.git'
 Plugin 'kassio/neoterm'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'jdonaldson/vaxe'
+"Plugin 'christoomey/vim-tmux-navigator'
+"Plugin 'jdonaldson/vaxe'
+"Plugin 'ctrlpvim/ctrlp.vim'
+"Plugin 'francoiscabrol/ranger.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -94,7 +100,7 @@ vmap <C-c><C-c> <Plug>SendSelectionToTmux
 nmap <C-c><C-c> <Plug>NormalModeSendToTmux
 nmap <C-c>r <Plug>SetTmuxVars
 
-if has("nvim")
+if has("nvim") && has("python")
     set inccommand=nosplit
     set clipboard=unnamedplus
     Plugin 'OmniSharp/omnisharp-vim'
@@ -103,3 +109,9 @@ endif
 vmap <C-c><C-c> <Plug>SendSelectionToTmux
 nmap <C-c><C-c> <Plug>NormalModeSendToTmux
 nmap <C-c>r <Plug>SetTmuxVars
+
+" Mimic Emacs Line Editing in Insert Mode Only
+inoremap <C-A> <Home>
+inoremap <C-B> <Left>
+inoremap <C-E> <End>
+inoremap <C-F> <Right>
