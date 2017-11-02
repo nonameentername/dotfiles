@@ -127,12 +127,8 @@ alias vssh='ssh -t vagrant@127.0.0.1 -p 2222 -i $HOME/.vagrant.d/insecure_privat
 
 if [[ "$(uname)" = "Darwin" ]]; then
     alias tmux='TERM=screen-256color-bce tmux -f ~/.tmux-osx.conf'
-    alias vi=nvim
-    alias vim=nvim
 else
     alias tmux='tmux'
-    alias vi=nvim
-    alias vim=nvim
 fi
 
 if [ -f $HOME/.private_aliases ]; then
