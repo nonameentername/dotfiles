@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Name=Qutebrowser
+GenericName=Web Browser
+Comment=View and edit files
+MimeType=text/html;
+Exec=bash -c "$HOME/usr/bin/qutebrowser"
+Icon=/home/wmendiza/usr/bin/qutebrowser.png
+Type=Application
+Terminal=false
+Categories=Network;Utility;X-Python;
+StartupWMClass=Qutebrowser
+X-Desktop-File-Install-Version=0.20
