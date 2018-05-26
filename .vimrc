@@ -20,6 +20,9 @@ set dir=/tmp
 set cot-=preview
 set path+=./**
 set linebreak
+set rtp+=$HOME/.vim/bundle/powerline/powerline/bindings/vim/
+set laststatus=2
+set t_Co=256
 
 source $HOME/.vim/vimrc/keymap.vim
 
@@ -87,6 +90,7 @@ Plugin 'kassio/neoterm'
 "Plugin 'jdonaldson/vaxe'
 "Plugin 'ctrlpvim/ctrlp.vim'
 "Plugin 'francoiscabrol/ranger.vim'
+Plugin 'powerline/powerline'
 
 call vundle#end()
 filetype plugin indent on

@@ -1,3 +1,5 @@
+export TERM=screen-256color-bce
+
 if [ -f /usr/libexec/java_home ]; then
     export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 else
@@ -133,4 +135,16 @@ fi
 
 if [ -f $HOME/.private_aliases ]; then
     source $HOME/.private_aliases
+fi
+
+if [ -f `which powerline-daemon` ]; then
+    powerline-daemon -q
+    POWERLINE_BASH_CONTINUATION=1
+    POWERLINE_BASH_SELECT=1
+
+    if [[ "$(uname)" = "Darwin" ]]; then
+        source /usr/share/powerline/bindings/bash/powerline.sh
+    else
+        source /usr/share/powerline/bindings/bash/powerline.sh
+    fi
 fi
