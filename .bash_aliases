@@ -128,9 +128,11 @@ fi
 alias vssh='ssh -t vagrant@127.0.0.1 -p 2222 -i $HOME/.vagrant.d/insecure_private_key'
 
 if [[ "$(uname)" = "Darwin" ]]; then
+    export POWER_LINE_BINDINGS=$(pyenv virtualenv-prefix)/envs/default/lib/python2.7/site-packages/powerline/bindings
     alias tmux='TERM=screen-256color-bce tmux -f ~/.tmux-osx.conf'
 else
-    alias tmux='tmux'
+    export POWER_LINE_BINDINGS=/usr/share/powerline/bindings
+    alias tmux='TERM=screen-256color-bce tmux'
 fi
 
 if [ -f $HOME/.private_aliases ]; then
@@ -142,9 +144,5 @@ if [ -f `which powerline-daemon` ]; then
     POWERLINE_BASH_CONTINUATION=1
     POWERLINE_BASH_SELECT=1
 
-    if [[ "$(uname)" = "Darwin" ]]; then
-        source /usr/share/powerline/bindings/bash/powerline.sh
-    else
-        source /usr/share/powerline/bindings/bash/powerline.sh
-    fi
+    source $POWER_LINE_BINDINGS/bash/powerline.sh
 fi
