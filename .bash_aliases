@@ -139,7 +139,7 @@ if [ -f $HOME/.private_aliases ]; then
     source $HOME/.private_aliases
 fi
 
-if [ -f `which powerline-daemon` ]; then
+if which powerline-daemon > /dev/null; then
     powerline-daemon -q
     POWERLINE_BASH_CONTINUATION=1
     POWERLINE_BASH_SELECT=1
