@@ -39,6 +39,7 @@ export PATH=$HOME/source/android-toolchain/bin:$PATH
 export PATH=$HOME/source/google-cloud-sdk/bin:$PATH
 export PATH=$GRADLE_HOME/bin:$PATH
 export PATH=$HOME/usr/bin:$PATH
+export PATH=$HOME/usr/local/bin:$PATH
 export PATH=$PATH:$GOROOT/bin
 export PATH=.:$PATH
 
@@ -47,6 +48,7 @@ alias gdb="gdb -tui"
 alias gohome="ssh -p 33323 home"
 alias ports="netstat -putlan"
 alias tmux="tmux attach || tmux"
+alias ls='ls --color=auto'
 
 #bash eternal history
 export HISTTIMEFORMAT="%s "
@@ -57,8 +59,10 @@ export HISTSIZE=2147483647
 
 #Terminal prompt
 GREEN="\[$(tput setaf 2)\]"
+YELLOW="\[$(tput setaf 3)\]"
+BLUE="\[$(tput setaf 4)\]"
 RESET="\[$(tput sgr0)\]"
-PS1="[\u@\h:\#${GREEN}\w${RESET}]$ "
+PS1="[werner@\h ${GREEN}\w${YELLOW}\$(parse_git_branch)${BLUE}\$(parse_pyenv_version)${RESET}]$ "
 
 export VISUAL=vi
 export EDITOR=vi
@@ -118,20 +122,22 @@ if which rbenv > /dev/null; then
     eval "$(rbenv init -)"
 fi
 
+if which pipenv > /dev/null; then
+    eval "$(pipenv --completion)"
+fi
+
 
 if which brew > /dev/null; then
     if [ -f `brew --prefix`/etc/bash_completion ]; then
-        . `brew --prefix`/etc/bash_completion
+        source `brew --prefix`/etc/bash_completion
     fi
 fi
 
 alias vssh='ssh -t vagrant@127.0.0.1 -p 2222 -i $HOME/.vagrant.d/insecure_private_key'
 
 if [[ "$(uname)" = "Darwin" ]]; then
-    export POWER_LINE_BINDINGS=$(pyenv virtualenv-prefix)/envs/default/lib/python2.7/site-packages/powerline/bindings
     alias tmux='TERM=screen-256color-bce tmux -f ~/.tmux-osx.conf'
 else
-    export POWER_LINE_BINDINGS=/usr/share/powerline/bindings
     alias tmux='TERM=screen-256color-bce tmux'
 fi
 
@@ -139,10 +145,13 @@ if [ -f $HOME/.private_aliases ]; then
     source $HOME/.private_aliases
 fi
 
-if which powerline-daemon > /dev/null; then
-    powerline-daemon -q
-    POWERLINE_BASH_CONTINUATION=1
-    POWERLINE_BASH_SELECT=1
+parse_git_branch() {
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
 
-    source $POWER_LINE_BINDINGS/bash/powerline.sh
-fi
+parse_pyenv_version() {
+    pyenv_version=$(pyenv version-name 2> /dev/null)
+    if [[ $pyenv_version != "system" ]]; then
+        echo "($pyenv_version)"
+    fi
+}

@@ -20,7 +20,6 @@ set dir=/tmp
 set cot-=preview
 set path+=./**
 set linebreak
-set rtp+=$HOME/.vim/bundle/powerline/powerline/bindings/vim/
 set laststatus=2
 set t_Co=256
 
@@ -80,7 +79,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 "Plugin 'https://github.com/scrooloose/nerdtree.git'
 Plugin 'tpope/vim-fugitive.git'
-if has("python")
+if has("python3")
     Plugin 'git@github.com:nonameentername/searchvim.git'
 endif
 "Plugin 'Rykka/InstantRst'
@@ -91,6 +90,7 @@ Plugin 'kassio/neoterm'
 "Plugin 'ctrlpvim/ctrlp.vim'
 "Plugin 'francoiscabrol/ranger.vim'
 Plugin 'powerline/powerline'
+Plugin 'leafgarland/typescript-vim'
 
 call vundle#end()
 filetype plugin indent on

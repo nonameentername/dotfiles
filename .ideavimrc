@@ -1,3 +1,6 @@
 source ~/.vimrc
 
 nmap g] :action GotoImplementation<CR>
+
+set visualbell
+set noerrorbells
