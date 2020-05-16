@@ -15,7 +15,7 @@ nmap<leader>h :split<cr>
 nmap<leader>v :vsplit<cr>
 nmap<leader><tab> :buffer
 
-nmap<leader>w :w<cr>
+nmap<leader>w :w!<cr>
 nmap <leader>l :set invlist<cr>
 
 
