@@ -87,6 +87,7 @@ Plugin 'kassio/neoterm'
 Plugin 'powerline/powerline'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'OmniSharp/omnisharp-vim'
+Plugin 'Rip-Rip/clang_complete'
 Plugin 'luisjure/csound-vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'prabirshrestha/asyncomplete.vim'
@@ -100,6 +101,7 @@ map <leader>T :NERDTreeToggle<CR>
 
 let g:tslime_always_current_session = 1
 let g:tslime_always_current_window = 1
+let g:clang_library_path='/usr/lib/llvm-8/lib/libclang-8.0.1.so'
 
 
 vmap <C-c><C-c> <Plug>SendSelectionToTmux
