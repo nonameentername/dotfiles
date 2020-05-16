@@ -86,8 +86,11 @@ Plugin 'kassio/neoterm'
 "Plugin 'francoiscabrol/ranger.vim'
 Plugin 'powerline/powerline'
 Plugin 'leafgarland/typescript-vim'
+Plugin 'OmniSharp/omnisharp-vim'
 Plugin 'luisjure/csound-vim'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'prabirshrestha/asyncomplete.vim'
+Plugin 'dense-analysis/ale'
 
 
 call vundle#end()
@@ -127,3 +130,9 @@ endif
 
 autocmd BufNewFile,BufRead *.inc set syntax=csound
 set nofoldenable
+
+let g:OmniSharp_server_stdio = 1
+let g:OmniSharp_server_use_mono = 1
+let g:ale_linters = {'cs': ['OmniSharp']}
+
+autocmd FileType cs nnoremap <buffer> gd :OmniSharpGotoDefinition<CR>
