@@ -86,6 +86,7 @@ Plugin 'kassio/neoterm'
 "Plugin 'francoiscabrol/ranger.vim'
 Plugin 'powerline/powerline'
 Plugin 'leafgarland/typescript-vim'
+Plugin 'luisjure/csound-vim'
 Plugin 'altercation/vim-colors-solarized'
 
 
@@ -123,3 +124,6 @@ if len(glob('$HOME/.vim/bundle/vim-colors-solarized/colors/solarized.vim'))
     set background=dark
     colorscheme solarized
 endif
+
+autocmd BufNewFile,BufRead *.inc set syntax=csound
+set nofoldenable
