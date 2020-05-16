@@ -48,11 +48,6 @@ endif
 "improve autocomplete menu color
 highlight Pmenu ctermbg=4 gui=bold
 
-if len(glob('$HOME/.vim/colors/solarized.vim'))
-    se t_Co=16
-    set background=dark
-    colorscheme solarized
-endif
 
 highlight clear SpellBad
 highlight SpellBad cterm=underline ctermfg=red
@@ -91,6 +86,8 @@ Plugin 'kassio/neoterm'
 "Plugin 'francoiscabrol/ranger.vim'
 Plugin 'powerline/powerline'
 Plugin 'leafgarland/typescript-vim'
+Plugin 'altercation/vim-colors-solarized'
+
 
 call vundle#end()
 filetype plugin indent on
@@ -99,6 +96,7 @@ map <leader>T :NERDTreeToggle<CR>
 
 let g:tslime_always_current_session = 1
 let g:tslime_always_current_window = 1
+
 
 vmap <C-c><C-c> <Plug>SendSelectionToTmux
 nmap <C-c><C-c> <Plug>NormalModeSendToTmux
@@ -119,3 +117,9 @@ inoremap <C-A> <Home>
 inoremap <C-B> <Left>
 inoremap <C-E> <End>
 inoremap <C-F> <Right>
+
+if len(glob('$HOME/.vim/bundle/vim-colors-solarized/colors/solarized.vim'))
+    set t_Co=16
+    set background=dark
+    colorscheme solarized
+endif
