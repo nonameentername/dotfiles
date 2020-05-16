@@ -134,6 +134,8 @@ endif
 autocmd BufNewFile,BufRead *.inc set syntax=csound
 set nofoldenable
 
+autocmd StdinReadPre * setlocal buftype=nofile bufhidden=hide noswapfile
+
 let g:OmniSharp_server_stdio = 1
 let g:OmniSharp_server_use_mono = 1
 let g:ale_linters = {'cs': ['OmniSharp']}
