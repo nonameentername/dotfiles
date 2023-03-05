@@ -93,7 +93,7 @@ Plugin 'luisjure/csound-vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'prabirshrestha/asyncomplete.vim'
 Plugin 'dense-analysis/ale'
-
+Plugin 'LnL7/vim-nix'
 
 call vundle#end()
 filetype plugin indent on

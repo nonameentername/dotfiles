@@ -41,6 +41,7 @@ export PATH=$GRADLE_HOME/bin:$PATH
 export PATH=$HOME/usr/bin:$PATH
 export PATH=$HOME/usr/local/bin:$PATH
 export PATH=$PATH:$GOROOT/bin
+export PATH=$HOME/.nix-profile/bin:$PATH
 export PATH=.:$PATH
 
 alias wicd-client="wicd-client --no-tray"
@@ -61,8 +62,9 @@ export HISTSIZE=2147483647
 GREEN="\[$(tput setaf 2)\]"
 YELLOW="\[$(tput setaf 3)\]"
 BLUE="\[$(tput setaf 4)\]"
+RED="\[$(tput setaf 5)\]"
 RESET="\[$(tput sgr0)\]"
-PS1="[werner@\h ${GREEN}\w${YELLOW}\$(parse_git_branch)${BLUE}\$(parse_pyenv_version)${RESET}]$ "
+PS1="[werner@\h ${GREEN}\w${YELLOW}\$(parse_git_branch)${BLUE}\$(parse_pyenv_version)${RED}\$(parse_nix_env)${RESET}]\n$ "
 
 export VISUAL=vi
 export EDITOR=vi
@@ -126,6 +128,15 @@ if which pipenv > /dev/null; then
     eval "$(pipenv --completion)"
 fi
 
+if [ -e '$HOME/.nix-profile/etc/profile.d/nix-daemon.sh' ]; then
+    source '$HOME/.nix-profile/etc/profile.d/nix-daemon.sh'
+fi
+
+if which direnv > /dev/null; then
+
+    # direnv
+    eval "$(direnv hook bash)"
+fi
 
 if which brew > /dev/null; then
     if [ -f `brew --prefix`/etc/bash_completion ]; then
@@ -155,3 +166,10 @@ parse_pyenv_version() {
         echo "($pyenv_version)"
     fi
 }
+
+parse_nix_env() {
+    if [ -n "$name" ]; then
+        echo "($(basename $name))"
+    fi
+}
+
