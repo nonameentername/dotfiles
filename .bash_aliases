@@ -136,6 +136,7 @@ if which direnv > /dev/null; then
 
     # direnv
     eval "$(direnv hook bash)"
+    export DIRENV_LOG_FORMAT=''
 fi
 
 if which brew > /dev/null; then
@@ -143,6 +144,9 @@ if which brew > /dev/null; then
         source `brew --prefix`/etc/bash_completion
     fi
 fi
+
+NPM_PACKAGES="${HOME}/.npm-packages"
+export PATH="$NPM_PACKAGES/bin:$PATH"
 
 alias vssh='ssh -t vagrant@127.0.0.1 -p 2222 -i $HOME/.vagrant.d/insecure_private_key'
 

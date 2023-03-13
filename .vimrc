@@ -48,7 +48,6 @@ endif
 "improve autocomplete menu color
 highlight Pmenu ctermbg=4 gui=bold
 
-
 highlight clear SpellBad
 highlight SpellBad cterm=underline ctermfg=red
 
@@ -94,6 +93,10 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'prabirshrestha/asyncomplete.vim'
 Plugin 'dense-analysis/ale'
 Plugin 'LnL7/vim-nix'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'rust-lang/rust.vim'
+Plugin 'neoclide/coc.nvim'
+
 
 call vundle#end()
 filetype plugin indent on
@@ -130,6 +133,8 @@ if len(glob('$HOME/.vim/bundle/vim-colors-solarized/colors/solarized.vim'))
     set background=dark
     colorscheme solarized
 endif
+
+highlight CocFloating ctermbg=0
 
 autocmd BufNewFile,BufRead *.inc set syntax=csound
 set nofoldenable
