@@ -34,6 +34,7 @@ endfunction
 
 inoremap <Tab> <C-R>=SuperCleverTab()<cr>
 inoremap <silent><expr> <TAB> pumvisible() ? "\<C-y>" : "<TAB>"
+inoremap <silent><expr> <cr> pumvisible() ? "\<C-y>" : "<cr>"
 
 function! CanComplete(method)
     if a:method == ''
