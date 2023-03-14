@@ -40,6 +40,7 @@ export PATH=$HOME/source/google-cloud-sdk/bin:$PATH
 export PATH=$GRADLE_HOME/bin:$PATH
 export PATH=$HOME/usr/bin:$PATH
 export PATH=$HOME/usr/local/bin:$PATH
+export PATH="$HOME/.jenv/bin:$PATH"
 export PATH=$PATH:$GOROOT/bin
 export PATH=$HOME/.nix-profile/bin:$PATH
 export PATH=.:$PATH
@@ -145,8 +146,16 @@ if which brew > /dev/null; then
     fi
 fi
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
 NPM_PACKAGES="${HOME}/.npm-packages"
 export PATH="$NPM_PACKAGES/bin:$PATH"
+
+if which jenv > /dev/null; then
+    eval "$(jenv init -)"
+fi
 
 alias vssh='ssh -t vagrant@127.0.0.1 -p 2222 -i $HOME/.vagrant.d/insecure_private_key'
 
