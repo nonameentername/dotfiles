@@ -95,8 +95,11 @@ Plugin 'dense-analysis/ale'
 Plugin 'LnL7/vim-nix'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'rust-lang/rust.vim'
-Plugin 'neoclide/coc.nvim'
+Plugin 'natebosch/vim-lsc'
 
+if executable('yarn')
+    Plugin 'neoclide/coc.nvim'
+endif
 
 call vundle#end()
 filetype plugin indent on
@@ -146,3 +149,6 @@ let g:OmniSharp_server_use_mono = 1
 let g:ale_linters = {'cs': ['OmniSharp']}
 
 autocmd FileType cs nnoremap <buffer> gd :OmniSharpGotoDefinition<CR>
+
+let g:lsc_server_commands = {'scala': 'metals'}
+let g:lsc_auto_map = v:true
