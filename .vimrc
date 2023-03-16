@@ -14,6 +14,7 @@ set wildmode=list:longest
 if exists("&wildignorecase")
     set wildignorecase
 endif
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 set path+=**
 set autoindent
 set dir=/tmp
@@ -71,17 +72,14 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
-"Plugin 'https://github.com/scrooloose/nerdtree.git'
+Plugin 'preservim/nerdtree'
 Plugin 'tpope/vim-fugitive.git'
-if has("python3")
-    Plugin 'git@github.com:nonameentername/searchvim.git'
-endif
 "Plugin 'Rykka/InstantRst'
 Plugin 'https://github.com/jgdavey/tslime.vim.git'
 Plugin 'kassio/neoterm'
 "Plugin 'christoomey/vim-tmux-navigator'
 "Plugin 'jdonaldson/vaxe'
-"Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 "Plugin 'francoiscabrol/ranger.vim'
 Plugin 'powerline/powerline'
 Plugin 'leafgarland/typescript-vim'
@@ -104,7 +102,8 @@ endif
 call vundle#end()
 filetype plugin indent on
 
-map <leader>T :NERDTreeToggle<CR>
+nmap <leader>T :NERDTreeToggle<CR>
+nmap <leader>F :NERDTreeFind<CR>
 
 let g:tslime_always_current_session = 1
 let g:tslime_always_current_window = 1
@@ -152,3 +151,8 @@ autocmd FileType cs nnoremap <buffer> gd :OmniSharpGotoDefinition<CR>
 
 let g:lsc_server_commands = {'scala': 'metals'}
 let g:lsc_auto_map = v:true
+
+let g:ctrlp_map = '<leader>f'
+nmap<silent><leader>b :CtrlPBuffer<cr>
+nmap<silent><leader>t :CtrlPTag<cr>
+nmap<silent><leader>s :CtrlPLine<cr>
