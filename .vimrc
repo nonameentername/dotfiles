@@ -94,6 +94,7 @@ Plugin 'LnL7/vim-nix'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'rust-lang/rust.vim'
 Plugin 'natebosch/vim-lsc'
+Plugin 'mg979/vim-visual-multi'
 
 if executable('yarn')
     Plugin 'neoclide/coc.nvim'
