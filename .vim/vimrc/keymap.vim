@@ -68,3 +68,9 @@ function! FormatXml()
     :set filetype=xml
 endfunction
 nmap<leader>x :exec FormatXml()<cr>
+
+function! FormatJson()
+    :%! jq
+    :set filetype=json
+endfunction
+nmap<leader>j :exec FormatJson()<cr>

@@ -44,6 +44,7 @@ if has("autocmd")
     autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
     autocmd bufwritepost .vimrc source $MYVIMRC
     autocmd BufRead,BufNewFile *.gradle set filetype=groovy
+    autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/
 endif
 
 "improve autocomplete menu color
@@ -95,6 +96,10 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'rust-lang/rust.vim'
 Plugin 'natebosch/vim-lsc'
 Plugin 'mg979/vim-visual-multi'
+Plugin 'hashivim/vim-terraform'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
+
 
 if executable('yarn')
     Plugin 'neoclide/coc.nvim'
@@ -153,7 +158,7 @@ autocmd FileType cs nnoremap <buffer> gd :OmniSharpGotoDefinition<CR>
 let g:lsc_server_commands = {'scala': 'metals'}
 let g:lsc_auto_map = v:true
 
-let g:ctrlp_map = '<leader>f'
-nmap<silent><leader>b :CtrlPBuffer<cr>
-nmap<silent><leader>t :CtrlPTag<cr>
-nmap<silent><leader>s :CtrlPLine<cr>
+nmap<silent><leader>b :Buffer!<cr>
+nmap<silent><leader>t :Tags!<cr>
+nmap<silent><leader>f :Files!<cr>
+nmap<silent><leader>s :Rg!<cr>

@@ -40,6 +40,8 @@ export PATH=$HOME/source/google-cloud-sdk/bin:$PATH
 export PATH=$GRADLE_HOME/bin:$PATH
 export PATH=$HOME/usr/bin:$PATH
 export PATH=$HOME/usr/local/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/.cargo/bin:$PATH
 export PATH="$HOME/.jenv/bin:$PATH"
 export PATH=$PATH:$GOROOT/bin
 export PATH=$HOME/.nix-profile/bin:$PATH
@@ -163,6 +165,7 @@ if [[ "$(uname)" = "Darwin" ]]; then
     alias tmux='TERM=screen-256color-bce tmux -f ~/.tmux-osx.conf'
 else
     alias tmux='TERM=screen-256color-bce tmux'
+    source $HOME/.fzf-solarized-dark
 fi
 
 if [ -f $HOME/.private_aliases ]; then
