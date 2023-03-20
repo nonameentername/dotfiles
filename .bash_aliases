@@ -168,6 +168,8 @@ else
     source $HOME/.fzf-solarized-dark
 fi
 
+export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
+
 if [ -f $HOME/.private_aliases ]; then
     source $HOME/.private_aliases
 fi
