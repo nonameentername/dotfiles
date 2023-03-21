@@ -160,8 +160,10 @@ let g:lsc_auto_map = v:true
 
 nmap<silent><leader>b :Buffer!<cr>
 nmap<silent><leader>t :Tags!<cr>
+nmap<silent><leader>T :Tags! <C-r>=expand("<cword>")<CR><CR>
 nmap<silent><leader>f :Files!<cr>
 nmap<silent><leader>s :Rg!<cr>
+nmap<silent><leader>S :Rg! <C-r>=expand("<cword>")<CR><CR>
 let g:ctrlp_regexp = 1
 
 if exists("g:neovide")
