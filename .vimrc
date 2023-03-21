@@ -99,7 +99,7 @@ Plugin 'mg979/vim-visual-multi'
 Plugin 'hashivim/vim-terraform'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
-
+Plugin 'tpope/vim-unimpaired'
 
 if executable('yarn')
     Plugin 'neoclide/coc.nvim'
@@ -162,3 +162,8 @@ nmap<silent><leader>b :Buffer!<cr>
 nmap<silent><leader>t :Tags!<cr>
 nmap<silent><leader>f :Files!<cr>
 nmap<silent><leader>s :Rg!<cr>
+let g:ctrlp_regexp = 1
+
+if exists("g:neovide")
+    set background=light
+endif

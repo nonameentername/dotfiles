@@ -1,4 +1,6 @@
 export TERM=screen-256color-bce
+export CLICOLOR=1
+export COLORTERM=truecolor
 
 if [ -f /usr/libexec/java_home ]; then
     export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
@@ -165,8 +167,9 @@ if [[ "$(uname)" = "Darwin" ]]; then
     alias tmux='TERM=screen-256color-bce tmux -f ~/.tmux-osx.conf'
 else
     alias tmux='TERM=screen-256color-bce tmux'
-    source $HOME/.fzf-solarized-dark
 fi
+
+source $HOME/.fzf-solarized-dark
 
 export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
 
