@@ -100,6 +100,8 @@ Plugin 'hashivim/vim-terraform'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'itchyny/lightline.vim'
+Plugin 'edkolev/tmuxline.vim'
 
 if executable('yarn')
     Plugin 'neoclide/coc.nvim'
@@ -169,3 +171,11 @@ let g:ctrlp_regexp = 1
 if exists("g:neovide")
     set background=light
 endif
+
+nnoremap <leader>tc :call system("tmux load-buffer -", @0)<cr>
+nnoremap <leader>tp :let @0 = system("tmux save-buffer -")<cr>"0p<cr>g;
+
+let g:lightline = {'colorscheme': 'solarized'}
+set noshowmode
+
+let g:tmuxline_powerline_separators = 0
