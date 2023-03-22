@@ -49,6 +49,28 @@ export PATH=$PATH:$GOROOT/bin
 export PATH=$HOME/.nix-profile/bin:$PATH
 export PATH=.:$PATH
 
+fzf_file_preview() {
+    if [ -d "$1" ]; then
+        tree "$1" -C -L 3
+    else
+        bat "$1" --style=numbers --color=always --pager=never
+    fi
+}
+export -f fzf_file_preview
+
+fzf_search_file() {
+    filename=$(find * -type d,f | fzf --preview 'fzf_file_preview {}')
+    if [ -d $filename ]; then
+        cd $filename
+    elif [ -f $filename ]; then
+        cd $(dirname $filename)
+        vi $(basename $filename)
+    fi
+}
+export -f fzf_search_file
+
+alias sd="cd ~ && cd \$(find * -type d | fzf --preview 'tree {} -C -L 3')"
+alias sf="fzf_search_file"
 alias wicd-client="wicd-client --no-tray"
 alias gdb="gdb -tui"
 alias gohome="ssh -p 33323 home"
