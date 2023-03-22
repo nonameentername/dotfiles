@@ -59,7 +59,7 @@ fzf_file_preview() {
 export -f fzf_file_preview
 
 fzf_search_file() {
-    filename=$(find * -type d,f | fzf --preview 'fzf_file_preview {}')
+    filename=$(( find * -type f & find * -type d ) 2> /dev/null | fzf --preview 'fzf_file_preview {}')
     if [ -d $filename ]; then
         cd $filename
     elif [ -f $filename ]; then
@@ -69,7 +69,7 @@ fzf_search_file() {
 }
 export -f fzf_search_file
 
-alias sd="cd ~ && cd \$(find * -type d | fzf --preview 'tree {} -C -L 3')"
+alias sd="cd \$(find * -type d 2>/dev/null | fzf --preview 'tree {} -C -L 3')"
 alias sf="fzf_search_file"
 alias wicd-client="wicd-client --no-tray"
 alias gdb="gdb -tui"
