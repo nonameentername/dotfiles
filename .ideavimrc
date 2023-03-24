@@ -2,5 +2,8 @@ source ~/.vimrc
 
 nmap g] :action GotoImplementation<CR>
 
+nmap <C-L> :action NextSplitter<CR>
+nmap <C-H> :action PrevSplitter<CR>
+
 set visualbell
 set noerrorbells
