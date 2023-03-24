@@ -1,0 +1,6 @@
+#!/bin/bash
+
+for dir in $(ls)
+do
+    stow -R $dir
+done
