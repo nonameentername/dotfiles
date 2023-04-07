@@ -1,4 +1,4 @@
-export TERM=screen-256color-bce
+export TERM=screen-256color
 export CLICOLOR=1
 export COLORTERM=truecolor
 
@@ -77,11 +77,11 @@ alias tmux="tmux attach || tmux"
 alias ls='ls --color=auto'
 
 #bash eternal history
+export HISTFILESIZE=
+export HISTSIZE=
 export HISTTIMEFORMAT="%s "
-PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND}"'echo $$ $USER \
-               "$(history 1)" >> ~/.bash_eternal_history'
-
-export HISTSIZE=2147483647
+export HISTFILE=~/.bash_eternal_history
+PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 
 #Terminal prompt
 GREEN="\[$(tput setaf 2)\]"
