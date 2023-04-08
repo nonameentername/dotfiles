@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+
+HEADER=" ctrl-s: sessions / ctrl-x: zoxide / ctrl-d: directory"
+
+DIR_PROMPT="directory> "
+DIR_SEARCH="find $HOME -type d -not -path '*/\.*' 2>/dev/null"
+DIR_BIND="ctrl-d:change-prompt($DIR_PROMPT)+reload($DIR_SEARCH)"
+
+Z_PROMPT="zoxide> "
+Z_SEARCH="zoxide query -l 2>/dev/null"
+Z_BIND="ctrl-x:change-prompt($Z_PROMPT)+reload($Z_SEARCH)"
+
+S_PROMPT="session> "
+S_SEARCH="tmux list-sessions -F '#S'"
+S_BIND="ctrl-s:change-prompt($S_PROMPT)+reload($S_SEARCH)"
+
+S_PREVIEW="tmux capture-pane -e -pt {} 2> /dev/null"
+DIR_PREVIEW="tree {} -C -L 3"
+PREVIEW="$S_PREVIEW || $DIR_PREVIEW"
+
+if [ "$TMUX" = "" ]; then
+	FZF=(fzf --bind "$DIR_BIND" --bind "$Z_BIND" --bind "$S_BIND" --reverse)
+else
+	FZF=(fzf-tmux --bind "$DIR_BIND" --bind "$Z_BIND" --bind "$S_BIND" -p --reverse -w 62% -h 38%)
+fi
+
+fzf_search() {
+	FZF+=(--preview "$PREVIEW" --header "$HEADER" --prompt $S_PROMPT)
+	DIR=$(eval "${S_SEARCH}" 2>/dev/null | "${FZF[@]}")
+
+	if [ "$DIR" = "" ]; then
+		exit 0
+	fi
+
+    zoxide add "$DIR" &>/dev/null
+	FOLDER=$(basename $DIR)
+	SESSION_NAME=$(echo "$FOLDER" | tr ' ' '_' | tr '.' '_' | tr ':' '_')
+
+	SESSION=$(tmux list-sessions -F '#S' | grep "^$SESSION_NAME$")
+
+	if [ "$SESSION" = "" ]; then
+		tmux new-session -d -s "$SESSION_NAME" -c "$DIR"
+		SESSION=$(tmux list-sessions -F '#S' | grep "^$SESSION_NAME$")
+	fi
+
+	if [ "$TMUX" = "" ]; then
+		tmux attach -t "$SESSION"
+	else
+		tmux switch-client -t "$SESSION"
+	fi
+}
+
+fzf_search

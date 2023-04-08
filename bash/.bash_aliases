@@ -47,28 +47,6 @@ export PATH=$PATH:$GOROOT/bin
 export PATH=$HOME/.nix-profile/bin:$PATH
 export PATH=.:$PATH
 
-fzf_file_preview() {
-    if [ -d "$1" ]; then
-        tree "$1" -C -L 3
-    else
-        bat "$1" --style=numbers --color=always --pager=never
-    fi
-}
-export -f fzf_file_preview
-
-fzf_search_file() {
-    filename=$(( find * -type f & find * -type d ) 2> /dev/null | fzf --preview 'fzf_file_preview {}')
-    if [ -d $filename ]; then
-        cd $filename
-    elif [ -f $filename ]; then
-        cd $(dirname $filename)
-        vi $(basename $filename)
-    fi
-}
-export -f fzf_search_file
-
-alias sd="cd \$(find * -type d 2>/dev/null | fzf --preview 'tree {} -C -L 3')"
-alias sf="fzf_search_file"
 alias wicd-client="wicd-client --no-tray"
 alias gdb="gdb -tui"
 alias gohome="ssh -p 33323 home"
@@ -168,6 +146,10 @@ if which brew > /dev/null; then
     if [ -f `brew --prefix`/etc/bash_completion ]; then
         source `brew --prefix`/etc/bash_completion
     fi
+fi
+
+if which zoxide > /dev/null; then
+    eval "$(zoxide init bash)"
 fi
 
 export NVM_DIR="$HOME/.nvm"
