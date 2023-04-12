@@ -1,0 +1,54 @@
+#!/bin/bash
+
+sudo apt update
+sudo apt install -y git stow vim tmux xclip fzf zoxide nix direnv \
+    docker.io docker-compose \
+    podman podman-compose distrobox crun
+
+#pyenv dependencies
+sudo apt install -y build-essential libssl-dev zlib1g-dev \
+    libbz2-dev libreadline-dev libsqlite3-dev curl \
+    libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+
+#osx dependencies
+sudo apt install -y qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils virt-manager libguestfs-tools
+sudo apt install -y x11-xserver-utils
+xhost +
+
+sudo systemctl enable --now libvirtd
+sudo systemctl enable --now virtlogd
+
+echo 1 | sudo tee /sys/module/kvm/parameters/ignore_msrs
+
+sudo modprobe kvm
+
+git clone git@github.com:nonameentername/dotfiles.git
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+git clone https://github.com/pyenv/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
+git clone git@github.com:nonameentername/gnome-wmii.git source/gnome-wmii
+git clone git@github.com:aruhier/gnome-terminal-colors-solarized.git source/external/gnome-terminal-colors-solarized
+
+pyenv install 3.11.3 -s
+pyenv virtualenv 3.11.3 default
+pyenv global default
+
+mkdir -p source/external
+
+pushd source/gnome-wmii
+    ./setup.sh
+popd
+
+pushd source/external/gnome-terminal-colors-solarized
+    ./install.sh  -s dark -p b1dcc9dd-5262-4d8d-a863-c897e6d979b9 --install-dircolors
+popd
+
+gsettings set org.gnome.shell.extensions.dash-to-dock intellihide false
+gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed false
+gsettings set org.gnome.shell.extensions.dash-to-dock autohide true
+
+gsettings set org.gnome.desktop.input-sources xkb-options "['caps:none']"
+
+sudo usermod -a -G nix-users $USER
+sudo usermod -a -G docker $USER

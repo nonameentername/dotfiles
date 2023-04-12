@@ -12,7 +12,6 @@ export IDEA_JDK=$JAVA_HOME
 export M2_HOME=$HOME/usr/bin/apache-maven-3.3.9
 export GRADLE_HOME=$HOME/usr/bin/gradle-1.8
 export ANT_HOME=/usr/share/ant
-export LD_LIBRARY_PATH=/home/wmendiza/usr/lib
 
 #android
 export ANDROID_SDK=$HOME/source/android-sdk
