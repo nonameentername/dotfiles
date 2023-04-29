@@ -33,8 +33,10 @@ git clone https://github.com/pyenv/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-v
 git clone git@github.com:nonameentername/gnome-wmii.git source/gnome-wmii
 git clone git@github.com:aruhier/gnome-terminal-colors-solarized.git source/external/gnome-terminal-colors-solarized
 git clone https://github.com/material-shell/material-shell.git source/external/material-shell
+git clone https://github.com/timbertson/gnome-shell-impatience.git source/external/gnome-shell-impatience
 git clone https://github.com/nvm-sh/nvm.git ~/.nvm
 
+source ~/.nvm/nvm.sh
 nvm install v18.16.0
 
 pushd source/external/material-shell
@@ -52,6 +54,11 @@ pushd source/external/material-shell
     gsettings --schemadir $schema set org.gnome.shell.extensions.materialshell.bindings use-maximize-layout "['<Super>f']"
     gsettings --schemadir $schema set org.gnome.shell.extensions.materialshell.bindings use-split-layout "['<Super>s']"
 popd
+
+ln -fs source/external/gnome-shell-impatience/impatience ~/.local/share/gnome-shell/extensions/impatience@gfxmonk.net
+gnome-extensions enable impatience@gfxmonk.net
+schema=~/.local/share/gnome-shell/extensions/impatience@gfxmonk.net/schemas
+gsettings --schemadir $schema set org.gnome.shell.extensions.net.gfxmonk.impatience speed-factor 0.25
 
 pyenv install 3.11.3 -s
 pyenv virtualenv 3.11.3 default
