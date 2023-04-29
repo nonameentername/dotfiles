@@ -3,7 +3,10 @@
 sudo apt update
 sudo apt install -y git stow vim tmux xclip fzf zoxide nix direnv \
     docker.io docker-compose \
-    podman podman-compose distrobox crun
+    podman podman-compose distrobox crun \
+    keepassx
+
+sudo snap install spotify
 
 #pyenv dependencies
 sudo apt install -y build-essential libssl-dev zlib1g-dev \
@@ -29,6 +32,26 @@ git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 git clone https://github.com/pyenv/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
 git clone git@github.com:nonameentername/gnome-wmii.git source/gnome-wmii
 git clone git@github.com:aruhier/gnome-terminal-colors-solarized.git source/external/gnome-terminal-colors-solarized
+git clone https://github.com/material-shell/material-shell.git source/external/material-shell
+git clone https://github.com/nvm-sh/nvm.git ~/.nvm
+
+nvm install v18.16.0
+
+pushd source/external/material-shell
+    make install
+    schema=~/.local/share/gnome-shell/extensions/material-shell@papyelgringo/schemas 
+    gsettings --schemadir $schema set org.gnome.shell.extensions.materialshell.bindings next-window "['<Super>j']"
+    gsettings --schemadir $schema set org.gnome.shell.extensions.materialshell.bindings previous-window "['<Super>k']"
+    gsettings --schemadir $schema set org.gnome.shell.extensions.materialshell.bindings next-workspace "['<Super>n']"
+    gsettings --schemadir $schema set org.gnome.shell.extensions.materialshell.bindings previous-workspace "['<Super>p']"
+    gsettings --schemadir $schema set org.gnome.shell.extensions.materialshell.bindings move-window-right "['<Shift><Super>j']"
+    gsettings --schemadir $schema set org.gnome.shell.extensions.materialshell.bindings move-window-left "['<Shift><Super>k']"
+    gsettings --schemadir $schema set org.gnome.shell.extensions.materialshell.bindings move-window-bottom "['<Shift><Super>n']"
+    gsettings --schemadir $schema set org.gnome.shell.extensions.materialshell.bindings move-window-top "['<Shift><Super>p']"
+    gsettings --schemadir $schema set org.gnome.shell.extensions.materialshell.bindings kill-focused-window "['<Shift><Super>c']"
+    gsettings --schemadir $schema set org.gnome.shell.extensions.materialshell.bindings use-maximize-layout "['<Super>f']"
+    gsettings --schemadir $schema set org.gnome.shell.extensions.materialshell.bindings use-split-layout "['<Super>s']"
+popd
 
 pyenv install 3.11.3 -s
 pyenv virtualenv 3.11.3 default
@@ -37,7 +60,8 @@ pyenv global default
 mkdir -p source/external
 
 pushd source/gnome-wmii
-    ./setup.sh
+    #./setup.sh
+    gnome-extensions disable ding@rastersoft.com
 popd
 
 pushd source/external/gnome-terminal-colors-solarized
@@ -52,3 +76,5 @@ gsettings set org.gnome.desktop.input-sources xkb-options "['caps:none']"
 
 sudo usermod -a -G nix-users $USER
 sudo usermod -a -G docker $USER
+
+sudo apt install steam
