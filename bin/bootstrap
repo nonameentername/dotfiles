@@ -25,6 +25,8 @@ echo 1 | sudo tee /sys/module/kvm/parameters/ignore_msrs
 
 sudo modprobe kvm
 
+mkdir -p source/external
+
 git clone git@github.com:nonameentername/dotfiles.git
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
@@ -63,8 +65,6 @@ gsettings --schemadir $schema set org.gnome.shell.extensions.net.gfxmonk.impatie
 pyenv install 3.11.3 -s
 pyenv virtualenv 3.11.3 default
 pyenv global default
-
-mkdir -p source/external
 
 pushd source/gnome-wmii
     #./setup.sh
