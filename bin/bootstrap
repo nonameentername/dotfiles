@@ -4,7 +4,7 @@ sudo apt update
 sudo apt install -y git stow vim tmux xclip fzf zoxide nix direnv \
     docker.io docker-compose \
     podman podman-compose distrobox crun \
-    keepassx
+    keepassx bat ripgrep tree silversearcher-ag
 
 sudo snap install spotify
 
@@ -37,6 +37,18 @@ git clone git@github.com:aruhier/gnome-terminal-colors-solarized.git source/exte
 git clone https://github.com/material-shell/material-shell.git source/external/material-shell
 git clone https://github.com/timbertson/gnome-shell-impatience.git source/external/gnome-shell-impatience
 git clone https://github.com/nvm-sh/nvm.git ~/.nvm
+
+pushd dotfiles
+    ./install
+popd
+
+mkdir -p ~/.config/bat/themes/
+git clone https://github.com/braver/Solarized.git ~/.config/bat/themes/Solarized
+pushd ~/.config/bat/themes/Solarized
+    git checkout 87e0109
+    sed -i '25s/1CD1FF12/073642/' 'Solarized (dark).tmTheme' 
+    bat cache --build
+popd
 
 source ~/.nvm/nvm.sh
 nvm install v18.16.0

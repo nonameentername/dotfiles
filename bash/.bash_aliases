@@ -170,7 +170,7 @@ else
     alias tmux='TERM=screen-256color-bce tmux'
 fi
 
-source $HOME/.fzf-solarized-dark
+export FZF_DEFAULT_OPTS='--color dark'
 
 export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
 
