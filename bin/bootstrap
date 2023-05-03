@@ -4,7 +4,7 @@ sudo apt update
 sudo apt install -y git stow vim tmux xclip fzf zoxide nix direnv \
     docker.io docker-compose \
     podman podman-compose distrobox crun \
-    keepassx bat ripgrep tree silversearcher-ag
+    keepassx bat ripgrep tree silversearcher-ag universal-ctags
 
 sudo snap install spotify
 

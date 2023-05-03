@@ -50,7 +50,6 @@ alias wicd-client="wicd-client --no-tray"
 alias gdb="gdb -tui"
 alias gohome="ssh -p 33323 home"
 alias ports="netstat -putlan"
-alias tmux="tmux attach || tmux"
 alias ls='ls --color=auto'
 
 #bash eternal history
@@ -80,8 +79,6 @@ alias ltree="tree -C | less -R"
 alias json="python -m json.tool"
 alias xml="xmllint --format -"
 alias html="tidy -i --indent-spaces 4"
-
-alias tmux="TERM=screen-256color-bce tmux"
 
 alias idea="_JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel' idea"
 
@@ -170,7 +167,7 @@ else
     alias tmux='TERM=screen-256color-bce tmux'
 fi
 
-export FZF_DEFAULT_OPTS='--color dark'
+export FZF_DEFAULT_OPTS='--color dark,bg+:#073642'
 
 export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
 
