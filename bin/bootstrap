@@ -92,6 +92,10 @@ gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed false
 gsettings set org.gnome.shell.extensions.dash-to-dock autohide true
 
 gsettings set org.gnome.desktop.input-sources xkb-options "['caps:none']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys terminal "['<Super>return']"
+
+gsettings set org.gnome.desktop.wm.preferences audible-bell false
+gsettings set org.gnome.desktop.wm.preferences visual-bell true
 
 sudo usermod -a -G nix-users $USER
 sudo usermod -a -G docker $USER
