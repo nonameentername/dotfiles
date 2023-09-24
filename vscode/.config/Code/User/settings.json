@@ -1,0 +1,14 @@
+{
+  "vim.normalModeKeyBindings": [
+    {
+      "before": [
+        "<leader>",
+        "f"
+      ],
+      "commands": [
+        "workbench.action.quickOpen"
+      ]
+    }
+  ],
+  "vim.leader": ","
+}
