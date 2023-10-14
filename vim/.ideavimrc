@@ -7,3 +7,4 @@ nmap <C-H> :action PrevSplitter<CR>
 
 set visualbell
 set noerrorbells
+set clipboard+=unnamed

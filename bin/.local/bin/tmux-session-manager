@@ -49,7 +49,7 @@ fzf_search() {
 	SESSION=$(tmux list-sessions -F '#S' | grep "^$SESSION_NAME$")
 
 	if [ "$SESSION" = "" ]; then
-		tmux new-session -d -s "$SESSION_NAME" -c "$DIR"
+		tmux new-session -d -s "$SESSION_NAME" -n "source" -c "$DIR"
 		SESSION=$(tmux list-sessions -F '#S' | grep "^$SESSION_NAME$")
 	fi
 
