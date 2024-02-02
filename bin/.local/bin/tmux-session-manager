@@ -12,11 +12,11 @@ Z_BIND="ctrl-x:change-prompt($Z_PROMPT)+reload($Z_SEARCH)"
 
 W_PROMPT="window> "
 W_SEARCH="tmux list-window -F '#I:#W'"
-W_BIND="ctrl-/:change-prompt($W_PROMPT)+reload($W_SEARCH)"
+W_BIND="ctrl-w:change-prompt($W_PROMPT)+reload($W_SEARCH)"
 
 S_PROMPT="session> "
 S_SEARCH="tmux list-sessions -F '#S'"
-S_BIND="ctrl-s:change-prompt($S_PROMPT)+reload($S_SEARCH)"
+S_BIND="ctrl-/:change-prompt($S_PROMPT)+reload($S_SEARCH)"
 
 S_PREVIEW="tmux capture-pane -e -pt {} 2> /dev/null"
 DIR_PREVIEW="tree {} -C -L 3"
@@ -29,8 +29,8 @@ else
 fi
 
 fzf_search() {
-	FZF+=(--preview "$PREVIEW" --header "$HEADER" --prompt $S_PROMPT)
-	DIR=$(eval "${S_SEARCH}" 2>/dev/null | "${FZF[@]}")
+	FZF+=(--preview "$PREVIEW" --header "$HEADER" --prompt $W_PROMPT)
+	DIR=$(eval "${W_SEARCH}" 2>/dev/null | "${FZF[@]}")
 
 	if [ "$DIR" = "" ]; then
 		exit 0

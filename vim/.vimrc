@@ -84,11 +84,12 @@ Plugin 'ctrlpvim/ctrlp.vim'
 "Plugin 'francoiscabrol/ranger.vim'
 Plugin 'powerline/powerline'
 Plugin 'leafgarland/typescript-vim'
-Plugin 'OmniSharp/omnisharp-vim'
+"Plugin 'OmniSharp/omnisharp-vim'
 Plugin 'Rip-Rip/clang_complete'
 Plugin 'luisjure/csound-vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'prabirshrestha/asyncomplete.vim'
+Plugin 'prabirshrestha/asyncomplete-lsp.vim'
 Plugin 'dense-analysis/ale'
 Plugin 'LnL7/vim-nix'
 Plugin 'davidhalter/jedi-vim'
@@ -101,6 +102,10 @@ Plugin 'junegunn/fzf.vim'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'itchyny/lightline.vim'
 Plugin 'edkolev/tmuxline.vim'
+Plugin 'prabirshrestha/vim-lsp'
+Plugin 'mattn/vim-lsp-settings'
+Plugin 'habamax/vim-godot'
+
 
 if executable('yarn')
     Plugin 'neoclide/coc.nvim'
@@ -109,12 +114,12 @@ endif
 call vundle#end()
 filetype plugin indent on
 
-nmap <leader>T :NERDTreeToggle<CR>
+nmap <leader>t :NERDTreeToggle<CR>
 nmap <leader>F :NERDTreeFind<CR>
 
 let g:tslime_always_current_session = 1
 let g:tslime_always_current_window = 1
-let g:clang_library_path='/usr/lib/llvm-8/lib/libclang-8.0.1.so'
+let g:clang_library_path='/usr/lib/llvm-15/lib/libclang.so.1'
 
 
 vmap <C-c><C-c> <Plug>SendSelectionToTmux
@@ -160,7 +165,7 @@ let g:lsc_server_commands = {'scala': 'metals'}
 let g:lsc_auto_map = v:true
 
 nmap<silent><leader>b :Buffer!<cr>
-nmap<silent><leader>t :Tags!<cr>
+"nmap<silent><leader>t :Tags!<cr>
 nmap<silent><leader>T :Tags! <C-r>=expand("<cword>")<CR><CR>
 nmap<silent><leader>f :Files!<cr>
 nmap<silent><leader>s :Rg!<cr>
@@ -178,3 +183,44 @@ let g:lightline = {'colorscheme': 'solarized'}
 set noshowmode
 
 let g:tmuxline_powerline_separators = 0
+
+if executable('clangd')
+    " pip install python-lsp-server
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'clangd',
+        \ 'cmd': {server_info->['clangd']},
+        \ 'allowlist': ['c', 'cpp'],
+        \ })
+endif
+
+function! s:on_lsp_buffer_enabled() abort
+    setlocal omnifunc=lsp#complete
+    setlocal signcolumn=yes
+    if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+    nmap <buffer> gd <plug>(lsp-definition)
+    nmap <buffer> gs <plug>(lsp-document-symbol-search)
+    nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
+    nmap <buffer> gr <plug>(lsp-references)
+    nmap <buffer> gi <plug>(lsp-implementation)
+    nmap <buffer> gt <plug>(lsp-type-definition)
+    nmap <buffer> <leader>rn <plug>(lsp-rename)
+    nmap <buffer> [g <plug>(lsp-previous-diagnostic)
+    nmap <buffer> ]g <plug>(lsp-next-diagnostic)
+    nmap <buffer> K <plug>(lsp-hover)
+endfunction
+
+augroup lsp_install
+    au!
+    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
+
+augroup ale
+    autocmd VimEnter * if(&diff) | let g:ale_open_list = 0 | endif
+    autocmd VimEnter * if(&diff) | let g:lsp_diagnostics_enabled = 0 | endif
+augroup END
+
+"let g:ale_open_list = 0
+"let g:lsp_diagnostics_enabled = 0
+
+let g:godot_executable = 'godot'
